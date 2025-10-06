@@ -243,48 +243,40 @@ copyright, .copyright{ color:#b6bdca; margin-top:10px; font-size:.95rem; }
   .site-nav a{ padding:14px var(--gutter); border-bottom:1px solid #475062; }
   .site-nav.open{ transform:none; opacity:1; pointer-events:auto; }
 }
-/* ===== Micro preview containers: small, natural render, clipped ===== */
+/* === Micro previews: small viewport + Y-offset (no styling inside the widget) === */
 
-/* 1) Hard reset in case any earlier rules added transforms/widths to the widgets */
-.micro-widget > .dt-new-car-funnel,
-.micro-widget > .dt-car-payment-calculator {
-  position: static !important;
-  width: auto !important;
-  max-width: 100% !important;
-  transform: none !important;
-  pointer-events: auto !important;
-}
-
-/* 2) Compact thumbnail container (small rectangle) */
-.micro-widget {
-  /* small card-ish viewport */
-  width: 360px;            /* tweak width to taste */
-  height: 320px;           /* “about as tall as the vehicle card” */
+/* Small, card-like viewport that clips overflow */
+.micro-widget{
+  width: 360px;           /* tweak width to taste */
+  height: 320px;          /* target: about the vehicle-card height */
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 12px;
   box-shadow: var(--shadow-1);
+  overflow: hidden;       /* clipped preview */
+  padding: 10px;          /* light frame */
+  margin: 0 auto;         /* center */
+  position: relative;
+}
 
-  /* framing */
-  overflow: hidden;        /* clip extra content (no scrollbars) */
-  padding: 10px;           /* light framing so it doesn’t feel cramped */
-  margin: 0 auto;          /* center in its section */
+/* Let the widget render naturally, then shift it vertically */
+.micro-widget > .dt-new-car-funnel,
+.micro-widget > .dt-car-payment-calculator{
   display: block;
+  width: auto;            /* natural width */
+  max-width: none;        /* don't force shrink */
+  margin-top: var(--micro-shift, 0);  /* <-- main control */
 }
 
-/* 3) Optionally give slightly different sizes per variant */
-.micro-widget--compact {
-  width: 340px;
-  height: 300px;
-  padding: 10px;
-}
-.micro-widget--regular {
-  width: 380px;
-  height: 320px;
-  padding: 10px;
+/* Default offsets for the two funnels (adjust if needed on your screen) */
+.micro-widget--compact{ --micro-shift: -140px; }   /* shows dropdowns + vehicle card */
+.micro-widget--regular{ --micro-shift: -200px; }   /* trims headline + form, shows left column */
+
+/* If you want slightly different box sizes */
+@media (min-width: 1100px){
+  .micro-widget--compact{ width: 340px; height: 300px; }
+  .micro-widget--regular{ width: 380px; height: 320px; }
 }
 
-/* 4) Tighten the widget-box spacing around previews */
-.widget-box:has(.micro-widget) .widget-slot {
-  padding: 12px;
-}
+/* Keep the widget-box content from adding extra padding around previews */
+.widget-box:has(.micro-widget) .widget-slot{ padding: 12px; }
