@@ -243,43 +243,48 @@ copyright, .copyright{ color:#b6bdca; margin-top:10px; font-size:.95rem; }
   .site-nav a{ padding:14px var(--gutter); border-bottom:1px solid #475062; }
   .site-nav.open{ transform:none; opacity:1; pointer-events:auto; }
 }
-/* ==== Micro previews: zoomed/cropped, not reflowed ==== */
-/* Container is just a viewport; no padding so we don't shrink the widget */
-.micro-widget{
-  width: 420px;            /* outer viewport width */
-  height: 320px;           /* outer viewport height (square-ish) */
+/* ===== Micro preview containers: small, natural render, clipped ===== */
+
+/* 1) Hard reset in case any earlier rules added transforms/widths to the widgets */
+.micro-widget > .dt-new-car-funnel,
+.micro-widget > .dt-car-payment-calculator {
+  position: static !important;
+  width: auto !important;
+  max-width: 100% !important;
+  transform: none !important;
+  pointer-events: auto !important;
+}
+
+/* 2) Compact thumbnail container (small rectangle) */
+.micro-widget {
+  /* small card-ish viewport */
+  width: 360px;            /* tweak width to taste */
+  height: 320px;           /* “about as tall as the vehicle card” */
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 12px;
   box-shadow: var(--shadow-1);
-  overflow: hidden;
-  position: relative;
-  margin: 0 auto;          /* center the card */
+
+  /* framing */
+  overflow: hidden;        /* clip extra content (no scrollbars) */
+  padding: 10px;           /* light framing so it doesn’t feel cramped */
+  margin: 0 auto;          /* center in its section */
+  display: block;
 }
 
-/* Let the widget think it's wide (prevents its “mobile” collapse).
-   Then scale and offset to show the area you want. */
-.micro-widget > .dt-new-car-funnel,
-.micro-widget > .dt-car-payment-calculator{
-  position: absolute;
-  top: 0; left: 0;
-  width: 960px;                 /* virtual canvas width for layout */
-  max-width: none !important;   /* don't let it shrink */
-  transform-origin: top left;
-  pointer-events: none;         /* thumbnail behavior */
+/* 3) Optionally give slightly different sizes per variant */
+.micro-widget--compact {
+  width: 340px;
+  height: 300px;
+  padding: 10px;
+}
+.micro-widget--regular {
+  width: 380px;
+  height: 320px;
+  padding: 10px;
 }
 
-/* --- Compact funnel framing --- */
-.micro-widget--compact > .dt-new-car-funnel{
-  /* Show headline + dropdowns + vehicle card */
-  transform: translate(-210px, -20px) scale(0.52);
+/* 4) Tighten the widget-box spacing around previews */
+.widget-box:has(.micro-widget) .widget-slot {
+  padding: 12px;
 }
-
-/* --- Regular funnel framing --- */
-.micro-widget--regular > .dt-new-car-funnel{
-  /* Show left column (title, dropdowns, vehicle card) and trim out the form */
-  transform: translate(-260px, -28px) scale(0.50);
-}
-
-/* If any inner images look soft on some devices, uncomment:
-.micro-widget img { image-rendering: auto; } */
