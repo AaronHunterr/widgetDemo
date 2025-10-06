@@ -243,64 +243,51 @@ copyright, .copyright{ color:#b6bdca; margin-top:10px; font-size:.95rem; }
   .site-nav a{ padding:14px var(--gutter); border-bottom:1px solid #475062; }
   .site-nav.open{ transform:none; opacity:1; pointer-events:auto; }
 }
-/* ===== Micro preview sizing & centering =====
-   Goal: small, square-ish preview focused on the card area.
-   Tweak the --micro-* vars if you want to nudge the framing.
-*/
+/* ===== Refined Micro Preview Sizing with Padding ===== */
 
-/* Default micro viewport */
-.micro-widget{
-  width: 340px;            /* overall preview width */
-  height: 340px;           /* overall preview height (short/square) */
-  display: grid;
-  place-items: center;     /* center the scaled widget */
-  overflow: hidden;        /* crop excess */
+.micro-widget {
+  width: 360px;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #fff;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: var(--shadow-1);
-  padding: 0;              /* give all pixels to the widget */
+  padding: 16px;              /* added internal padding */
+  overflow: hidden;
+  margin: 0 auto;             /* centers each preview */
 }
 
-/* Shared transforms for any dt-* widget placed directly inside .micro-widget */
+/* Give each widget a softer, centered scaling */
 .micro-widget > .dt-new-car-funnel,
-.micro-widget > .dt-car-payment-calculator{
-  /* scale & position knobs (adjust if needed) */
-  --micro-scale: 0.82;     /* downscale to fit viewport */
-  --micro-offset-x: -24px; /* shift left/right to center focal area */
-  --micro-offset-y: -16px; /* shift up/down to center focal area */
-
-  transform: translate(var(--micro-offset-x), var(--micro-offset-y)) scale(var(--micro-scale));
-  transform-origin: top left;
-
-  /* Prevent the widget from reflowing inside the small box */
-  width: 640px;            /* a stable width for the unscaled widget surface */
-  max-width: none !important;
+.micro-widget > .dt-car-payment-calculator {
+  transform: scale(0.8);
+  transform-origin: top center;
 }
 
-/* Compact funnel micro (slightly different framing) */
-.micro-widget--compact{
-  width: 320px;
+/* Compact funnel: slightly smaller & tighter crop */
+.micro-widget--compact {
+  width: 340px;
   height: 320px;
+  padding: 14px;
 }
-.micro-widget--compact > .dt-new-car-funnel{
-  --micro-scale: 0.86;
-  --micro-offset-x: -18px;
-  --micro-offset-y: -10px;
-}
-
-/* Regular funnel micro (a touch wider/taller) */
-.micro-widget--regular{
-  width: 360px;
-  height: 360px;
-}
-.micro-widget--regular > .dt-new-car-funnel{
-  --micro-scale: 0.80;
-  --micro-offset-x: -28px;
-  --micro-offset-y: -20px;
+.micro-widget--compact > .dt-new-car-funnel {
+  transform: scale(0.83);
 }
 
-/* Optional: tighten the widget-box padding for these previews */
-.widget-box:has(.micro-widget) .widget-slot{
-  padding: 10px;
+/* Regular funnel: slightly larger framing */
+.micro-widget--regular {
+  width: 380px;
+  height: 340px;
+  padding: 18px;
+}
+.micro-widget--regular > .dt-new-car-funnel {
+  transform: scale(0.82);
+}
+
+/* Optional: consistent spacing below each preview block */
+.widget-box:has(.micro-widget) {
+  padding-bottom: 12px;
 }
