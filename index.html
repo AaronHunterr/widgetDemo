@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
   <title>Car Buying – Demo</title>
-  <meta name="description" content="Demo category page with a right‑rail widget slot and editorial layout." />
+  <meta name="description" content="Demo category page with a right-rail widget slot and editorial layout." />
 
-  <!-- (Optional) Google Fonts; remove if you prefer strict system fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- NOTE: Sofia Pro is a paid font. We reference it in CSS as a family name so your licensed kit can supply it.
+       Without a license, the page will fall back to system sans. -->
+  <!-- If you have a license/CDN kit, add it here. Example:
+  <link rel="stylesheet" href="https://use.typekit.net/XXXXXXX.css"> -->
 
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -19,7 +19,7 @@
   <div class="topbar">
     <div class="container topbar__inner">
       <span class="topbar__badge">Demo</span>
-      <span class="topbar__msg">This is a non‑branded, non‑affiliated mock for internal testing.</span>
+      <span class="topbar__msg">This is a non-branded, non-affiliated mock for internal testing.</span>
     </div>
   </div>
 
@@ -47,7 +47,7 @@
     </div>
   </header>
 
-  <!-- Leaderboard ad placeholder -->
+  <!-- Leaderboard ad placeholder (now on dark background) -->
   <div class="container ad ad--leaderboard" role="complementary" aria-label="Ad">
     <div class="ad__label">Advertisement</div>
     <div class="ad__box">Leaderboard 970×250</div>
@@ -61,7 +61,7 @@
 
       <div class="pill-nav" role="navigation" aria-label="Category filters">
         <button class="pill is-active">All</button>
-        <button class="pill">How‑To</button>
+        <button class="pill">How-To</button>
         <button class="pill">Used</button>
         <button class="pill">Finance</button>
         <button class="pill">Deals</button>
@@ -81,9 +81,9 @@
             <img src="https://picsum.photos/seed/featured1/1200/675" alt="Featured story image">
           </a>
           <div class="card__body">
-            <a href="#" class="kicker">HOW‑TO</a>
+            <a href="#" class="kicker">HOW-TO</a>
             <h2 class="card__title">
-              <a href="#">How to buy a car online in 2025: A step‑by‑step playbook</a>
+              <a href="#">How to buy a car online in 2025: A step-by-step playbook</a>
             </h2>
             <p class="card__excerpt">From setting a budget to arranging delivery, this walkthrough covers each decision point so you get the right car at the right price.</p>
             <div class="card__meta">By Demo Author · Oct 6, 2025</div>
@@ -128,6 +128,43 @@
         </div>
       </section>
 
+      <!-- NEW: Micro preview — Compact Funnel -->
+      <section class="widget-box">
+        <h2 class="widget-box__title">Compact Funnel — Micro Preview</h2>
+        <div class="widget-slot">
+          <div class="micro-widget micro-widget--compact">
+            <div
+              class="dt-new-car-funnel"
+              data-gid="0000-5200"
+              data-tenant="RSP1995"
+              data-make="Chevrolet"
+              data-model="Blazer"
+              data-color-primary="#DE2828"
+              data-font-primary="sofia-pro, sans-serif"
+              data-theme="compact">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEW: Micro preview — Regular Funnel -->
+      <section class="widget-box">
+        <h2 class="widget-box__title">Regular Funnel — Micro Preview</h2>
+        <div class="widget-slot">
+          <div class="micro-widget micro-widget--regular">
+            <div
+              class="dt-new-car-funnel"
+              data-gid="0000-5200"
+              data-tenant="RSP1995"
+              data-make="Chevrolet"
+              data-model="Blazer"
+              data-color-primary="#DE2828"
+              data-font-primary="sofia-pro, sans-serif">
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Grid of stories -->
       <div class="grid" id="grid">
         <article class="card">
@@ -137,7 +174,7 @@
           <div class="card__body">
             <a href="#" class="kicker">FINANCE</a>
             <h3 class="card__title"><a href="#">Leasing vs. buying: What really costs less in 2025?</a></h3>
-            <p class="card__excerpt">Run the numbers on term length, APR, and residuals to see the break‑even point.</p>
+            <p class="card__excerpt">Run the numbers on term length, APR, and residuals to see the break-even point.</p>
             <div class="card__meta">5 min read · Guides</div>
           </div>
         </article>
@@ -147,8 +184,8 @@
             <img src="https://picsum.photos/seed/a2/640/360" alt="Story image">
           </a>
           <div class="card__body">
-            <a href="#" class="kicker">HOW‑TO</a>
-            <h3 class="card__title"><a href="#">Get top dollar for your trade‑in</a></h3>
+            <a href="#" class="kicker">HOW-TO</a>
+            <h3 class="card__title"><a href="#">Get top dollar for your trade-in</a></h3>
             <p class="card__excerpt">Prep, photos, timing and the negotiation script that works.</p>
             <div class="card__meta">7 min read · Tips</div>
           </div>
@@ -161,7 +198,7 @@
           <div class="card__body">
             <a href="#" class="kicker">DEALS</a>
             <h3 class="card__title"><a href="#">Hidden incentives: How to spot them</a></h3>
-            <p class="card__excerpt">Manufacturer cash, loyalty, and dealer‑specific programs explained.</p>
+            <p class="card__excerpt">Manufacturer cash, loyalty, and dealer-specific programs explained.</p>
             <div class="card__meta">4 min read · Deals</div>
           </div>
         </article>
@@ -174,7 +211,7 @@
 
     <!-- Right rail -->
     <aside class="rail" aria-label="Sidebar">
-      <!-- Right‑rail widget: Funnel (Compact) -->
+      <!-- Right-rail widget: Funnel (Compact) -->
       <section class="widget-box">
         <h2 class="widget-box__title">Deals Finder (Funnel — Compact)</h2>
         <div class="widget-slot">
@@ -191,13 +228,13 @@
         </div>
       </section>
 
-      <!-- In‑rail ad placeholder -->
+      <!-- In-rail ad placeholder -->
       <div class="ad ad--mpu" role="complementary" aria-label="Ad">
         <div class="ad__label">Advertisement</div>
         <div class="ad__box">MPU 300×250</div>
       </div>
 
-      <!-- Right‑rail widget: Calculator -->
+      <!-- Right-rail widget: Calculator -->
       <section class="widget-box">
         <h2 class="widget-box__title">Payment Calculator</h2>
         <div class="widget-slot">
@@ -216,7 +253,7 @@
       <section class="widget-box">
         <h2 class="widget-box__title">Popular Guides</h2>
         <ul class="list">
-          <li><a href="#">Certified pre‑owned: worth it?</a></li>
+          <li><a href="#">Certified pre-owned: worth it?</a></li>
           <li><a href="#">Extended warranties decoded</a></li>
           <li><a href="#">How to negotiate the OTD price</a></li>
           <li><a href="#">What to check on delivery day</a></li>
