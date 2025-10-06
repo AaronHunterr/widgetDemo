@@ -243,3 +243,64 @@ copyright, .copyright{ color:#b6bdca; margin-top:10px; font-size:.95rem; }
   .site-nav a{ padding:14px var(--gutter); border-bottom:1px solid #475062; }
   .site-nav.open{ transform:none; opacity:1; pointer-events:auto; }
 }
+/* ===== Micro preview sizing & centering =====
+   Goal: small, square-ish preview focused on the card area.
+   Tweak the --micro-* vars if you want to nudge the framing.
+*/
+
+/* Default micro viewport */
+.micro-widget{
+  width: 340px;            /* overall preview width */
+  height: 340px;           /* overall preview height (short/square) */
+  display: grid;
+  place-items: center;     /* center the scaled widget */
+  overflow: hidden;        /* crop excess */
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow-1);
+  padding: 0;              /* give all pixels to the widget */
+}
+
+/* Shared transforms for any dt-* widget placed directly inside .micro-widget */
+.micro-widget > .dt-new-car-funnel,
+.micro-widget > .dt-car-payment-calculator{
+  /* scale & position knobs (adjust if needed) */
+  --micro-scale: 0.82;     /* downscale to fit viewport */
+  --micro-offset-x: -24px; /* shift left/right to center focal area */
+  --micro-offset-y: -16px; /* shift up/down to center focal area */
+
+  transform: translate(var(--micro-offset-x), var(--micro-offset-y)) scale(var(--micro-scale));
+  transform-origin: top left;
+
+  /* Prevent the widget from reflowing inside the small box */
+  width: 640px;            /* a stable width for the unscaled widget surface */
+  max-width: none !important;
+}
+
+/* Compact funnel micro (slightly different framing) */
+.micro-widget--compact{
+  width: 320px;
+  height: 320px;
+}
+.micro-widget--compact > .dt-new-car-funnel{
+  --micro-scale: 0.86;
+  --micro-offset-x: -18px;
+  --micro-offset-y: -10px;
+}
+
+/* Regular funnel micro (a touch wider/taller) */
+.micro-widget--regular{
+  width: 360px;
+  height: 360px;
+}
+.micro-widget--regular > .dt-new-car-funnel{
+  --micro-scale: 0.80;
+  --micro-offset-x: -28px;
+  --micro-offset-y: -20px;
+}
+
+/* Optional: tighten the widget-box padding for these previews */
+.widget-box:has(.micro-widget) .widget-slot{
+  padding: 10px;
+}
