@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Car Quotes</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    .quotes-only { padding: 24px 0 48px; }
+    .quotes-panel{
+      background:#fff; border:1px solid var(--border); border-radius:12px;
+      box-shadow:var(--shadow-1);
+    }
+    .quotes-panel__hd{ padding:14px; border-bottom:1px solid var(--border); font-weight:800; }
+    .quotes-panel__bd{ padding:0; } /* widget full width */
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header__inner">
+      <a class="brand" href="./">
+        <span class="brand__mark" aria-hidden="true">⬤</span>
+        <span class="brand__text">Auto News Demo</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
+      <nav class="site-nav" id="siteNav" aria-label="Primary">
+        <a href="./">News</a>
+        <a href="#">Reviews</a>
+        <a href="#">EVs</a>
+        <a href="./">Car Buying</a>
+        <a href="./widget.html" class="is-active">Car Quotes</a>
+        <a href="#">Ownership</a>
+        <a href="#">Videos</a>
+        <a href="#">Deals</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1 class="hero__title">Car Quotes</h1>
+      <p class="hero__dek">Interactive widget demo in a clean, distraction-free layout.</p>
+    </div>
+  </section>
+
+  <main class="container quotes-only">
+    <section class="quotes-panel">
+      <div class="quotes-panel__hd">New-Car Funnel</div>
+      <div class="quotes-panel__bd">
+        <div
+          class="dt-new-car-funnel"
+          data-gid="0000-5200"
+          data-tenant="RSP1995"
+          data-make="Chevrolet"
+          data-model="Blazer"
+          data-color-primary="#DE2828"
+          data-font-primary="sofia-pro, sans-serif">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#">About</a><a href="#">Editorial Policy</a><a href="#">Contact</a><a href="#">Privacy</a>
+      </nav>
+      <p class="copyright">© <span id="year"></span> Demo Media.</p>
+    </div>
+  </footer>
+
+  <script src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget-inline.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
