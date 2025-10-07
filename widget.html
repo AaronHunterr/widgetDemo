@@ -6,23 +6,11 @@
   <meta name="robots" content="noindex,nofollow" />
   <title>Car Quotes</title>
   <link rel="stylesheet" href="./styles.css" />
-  <style>
-    .quotes-only { padding: 24px 0 48px; }
-    .quotes-panel{
-      background:#fff; border:1px solid var(--border); border-radius:12px;
-      box-shadow:var(--shadow-1);
-    }
-    .quotes-panel__hd{ padding:14px; border-bottom:1px solid var(--border); font-weight:800; }
-    .quotes-panel__bd{ padding:0; } /* widget full width */
-  </style>
 </head>
 <body>
   <header class="site-header" id="siteHeader">
     <div class="container header__inner">
-      <a class="brand" href="./">
-        <span class="brand__mark" aria-hidden="true">⬤</span>
-        <span class="brand__text">Auto News Demo</span>
-      </a>
+      <a class="brand" href="./"><span class="brand__mark" aria-hidden="true">⬤</span><span class="brand__text">Auto News Demo</span></a>
       <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
       <nav class="site-nav" id="siteNav" aria-label="Primary">
         <a href="./">News</a>
@@ -30,7 +18,8 @@
         <a href="#">EVs</a>
         <a href="./">Car Buying</a>
         <a href="./widget.html" class="is-active">Car Quotes</a>
-        <a href="./quotes.html" class="is-active">Color Variant</a>
+        <a href="./quotes.html">Car Shopping</a>
+        <a href="#">Ownership</a>
         <a href="#">Videos</a>
         <a href="#">Deals</a>
       </nav>
@@ -40,24 +29,33 @@
   <section class="hero">
     <div class="container hero__inner">
       <h1 class="hero__title">Car Quotes</h1>
-      <p class="hero__dek">Interactive widget demo in a clean, distraction-free layout.</p>
+      <p class="hero__dek">Switch widget type and primary color dynamically (no reload).</p>
     </div>
   </section>
 
-  <main class="container quotes-only">
-    <section class="quotes-panel">
-      <div class="quotes-panel__hd">New-Car Funnel</div>
-      <div class="quotes-panel__bd">
-        <div
-          class="dt-new-car-funnel"
-          data-gid="0000-5200"
-          data-tenant="RSP1995"
-          data-make="Chevrolet"
-          data-model="Blazer"
-          data-color-primary="#ffba3a"
-          data-font-primary="sofia-pro, sans-serif">
-        </div>
+  <main class="container quotes-wrap">
+    <!-- Controls -->
+    <div class="controls">
+      <div class="group" id="typeControls">
+        <span class="label">Widget:</span>
+        <button class="btn is-active" data-type="funnel">New Car Funnel</button>
+        <button class="btn" data-type="funnel-compact">Funnel (Compact)</button>
+        <button class="btn" data-type="calculator">Calculator</button>
       </div>
+      <div class="group" id="colorControls">
+        <span class="label">Color:</span>
+        <span class="swatch" style="background:#303745" data-color="#303745" title="#303745"></span>
+        <span class="swatch" style="background:#fd4e3f" data-color="#fd4e3f" title="#fd4e3f"></span>
+        <span class="swatch is-active" style="background:#de2828" data-color="#de2828" title="#de2828"></span>
+        <span class="swatch" style="background:#252629" data-color="#252629" title="#252629"></span>
+        <span class="swatch" style="background:#000000" data-color="#000000" title="#000000"></span>
+        <span class="swatch" style="background:#ffba3a" data-color="#ffba3a" title="#ffba3a"></span>
+      </div>
+    </div>
+
+    <!-- Demo panel -->
+    <section class="demo-panel quotes-card">
+      <div id="widgetSingle"></div>
     </section>
   </main>
 
@@ -70,7 +68,72 @@
     </div>
   </footer>
 
-  <script src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget-inline.js"></script>
-  <script src="./app.js"></script>
+  <!-- Dynamic loader -->
+  <script src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget.js"></script>
+  <script>
+    // Basic shell behavior
+    const siteHeader = document.getElementById('siteHeader');
+    addEventListener('scroll', () => siteHeader.classList.toggle('scrolled', scrollY > 6));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuToggle = document.getElementById('menuToggle'), siteNav = document.getElementById('siteNav');
+    if (menuToggle && siteNav) menuToggle.onclick = () => siteNav.classList.toggle('open');
+
+    // --- Dynamic widget controls (single) ---
+    const dtc = window.dtc;
+    const root = document.getElementById('widgetSingle');
+    let current = { type: 'funnel', color: '#de2828' };
+    let instance = new dtc.Widget({ slot: 1 });
+
+    function buildRootEl({ type, color }) {
+      const el = document.createElement('div');
+      if (type === 'calculator') {
+        el.className = 'dt-car-payment-calculator';
+      } else {
+        el.className = 'dt-new-car-funnel';
+        if (type === 'funnel-compact') el.setAttribute('data-theme', 'compact');
+      }
+      el.setAttribute('data-gid', '0000-5200');
+      el.setAttribute('data-tenant', 'RSP1995');
+      el.setAttribute('data-color-primary', color);
+      el.setAttribute('data-font-primary', 'sofia-pro, sans-serif');
+      // keep your demo make/model
+      if (el.className.includes('funnel')) {
+        el.setAttribute('data-make', 'Chevrolet');
+        el.setAttribute('data-model', 'Blazer');
+      }
+      return el;
+    }
+
+    async function renderSingle() {
+      root.innerHTML = '';
+      const mount = buildRootEl(current);
+      root.appendChild(mount);
+      await instance.render(mount);
+    }
+
+    // Type buttons
+    document.querySelectorAll('#typeControls .btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        document.querySelectorAll('#typeControls .btn').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        current.type = btn.dataset.type;
+        await instance.unmount();
+        renderSingle();
+      });
+    });
+
+    // Color swatches
+    document.querySelectorAll('#colorControls .swatch').forEach(s => {
+      s.addEventListener('click', async () => {
+        document.querySelectorAll('#colorControls .swatch').forEach(x => x.classList.remove('is-active'));
+        s.classList.add('is-active');
+        current.color = s.dataset.color;
+        await instance.unmount();
+        renderSingle();
+      });
+    });
+
+    renderSingle();
+  </script>
 </body>
 </html>

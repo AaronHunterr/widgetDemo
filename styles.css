@@ -282,3 +282,41 @@ copyright, .copyright{ color:#b6bdca; margin-top:10px; font-size:.95rem; }
   transform: none !important;
   position: static !important;
 }
+/* Widget demo containers (requested color) */
+.demo-panel {
+  background: #2d3442;            /* container background */
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-1);
+  padding: 12px;                  /* slight inner padding */
+}
+
+/* Control bar */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 16px 0;
+}
+.controls .group {
+  display: flex; gap: 8px; align-items: center; background: #394154; border:1px solid #475062; border-radius: 999px; padding: 6px 8px;
+}
+.controls .label { font-weight: 700; font-size: .9rem; color: #e5e7eb; margin-right: 4px; }
+.controls .btn {
+  background: #2b3240; border: 1px solid #475062; color: #e5e7eb; padding: .45rem .7rem; border-radius: 999px; font-weight: 700; cursor: pointer;
+}
+.controls .btn.is-active { background: var(--brand); border-color: var(--brand); color: #fff; }
+.controls .swatch {
+  width: 22px; height: 22px; border-radius: 999px; border: 2px solid #fff3; cursor: pointer; display: inline-block;
+}
+.controls .swatch.is-active { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* Layout helpers for quotes.html */
+.quotes-wrap { padding: 24px 0 48px; }
+.quotes-grid { display: grid; gap: 20px; }
+@media (min-width: 1024px) { .quotes-grid { grid-template-columns: 1fr 1fr; } }
+.quotes-card { border-radius: 12px; overflow: hidden; }
+
+/* Slight extra padding for widget boxes on index.html only */
+.index .widget-box .widget-slot { padding: 10px; }
