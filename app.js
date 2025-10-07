@@ -59,3 +59,41 @@ if (loadMoreBtn) {
     }
   });
 }
+// ---- Auto-size mini previews (whole widget scaled, no cropping) ----
+function sizeMiniPreviews() {
+  document.querySelectorAll('.mini-scaler').forEach(ms => {
+    const scale = parseFloat(getComputedStyle(ms).getPropertyValue('--scale')) || 0.5;
+    const content = ms.querySelector('.mini-scaler__content');
+    if (!content) return;
+    const widget = content.firstElementChild; // dt-* root
+    if (!widget) return;
+
+    // Natural (unscaled) size
+    const naturalWidth = content.offsetWidth;      // ~ base-width
+    const naturalHeight = widget.offsetHeight;     // actual widget height after render
+
+    // Apply scaled size to the wrapper so layout below is correct
+    ms.style.width  = (naturalWidth * scale) + 'px';
+    ms.style.height = (naturalHeight * scale) + 'px';
+  });
+}
+
+// Run after page load, after Rydeshopper initializes, and on DOM changes
+window.addEventListener('load', () => {
+  // Initial passes (widgets may hydrate asynchronously)
+  sizeMiniPreviews();
+  setTimeout(sizeMiniPreviews, 300);
+  setTimeout(sizeMiniPreviews, 1000);
+  setTimeout(sizeMiniPreviews, 2000);
+
+  // Observe widget mutations to re-measure when internal content changes
+  const mo = new MutationObserver(() => {
+    requestAnimationFrame(sizeMiniPreviews);
+  });
+  document.querySelectorAll('.mini-scaler__content').forEach(c => {
+    mo.observe(c, { childList: true, subtree: true });
+  });
+
+  // Re-measure on resize (just in case)
+  window.addEventListener('resize', sizeMiniPreviews);
+});

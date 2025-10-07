@@ -245,39 +245,34 @@ copyright, .copyright{ color:#b6bdca; margin-top:10px; font-size:.95rem; }
 }
 /* === Mini previews: show the whole widget, uniformly scaled (no crop) === */
 /* Outer card that defines the final small size and frames the preview */
-.mini-widget {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: var(--shadow-1);
-  padding: 10px;                 /* light frame */
-  margin: 0 auto;                /* center in column */
-  overflow: visible;             /* no cropping */
-  width: max-content;            /* shrink to scaled width */
+/* Mini preview: tighter frame and auto width */
+.mini-widget{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  box-shadow:var(--shadow-1);
+  padding:8px;                 /* smaller frame */
+  margin:0 auto;
+  display:inline-block;        /* shrink-wrap to scaled size */
 }
 
-/* Scaler: sets a wide base so the widget lays out naturally,
-   then visually scales the entire thing down */
-.mini-scaler {
-  --base-width: 1024px;          /* natural desktop-ish canvas for widget */
-  --scale: 0.50;                 /* ↓ overall size (try 0.45–0.60) */
+.mini-scaler{
+  --base-width:1024px;
+  --scale:0.50;
 
-  width: calc(var(--base-width) * var(--scale));
-  /* reserve vertical space so nothing overlaps below */
-  height: calc(var(--scaled-height, 700px)); /* will be set from inline if desired */
-
-  position: relative;
+  /* width/height will be set by JS based on the widget’s real size */
+  width:auto;
+  height:auto;
+  position:relative;
 }
 
-/* The actual scaling happens on the content layer */
-.mini-scaler__content {
-  width: var(--base-width);
-  transform: scale(var(--scale));
-  transform-origin: top left;
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;          /* thumbnail feel; remove if you want it interactive */
+.mini-scaler__content{
+  width:var(--base-width);
+  transform:scale(var(--scale));
+  transform-origin:top left;
+  position:absolute;
+  top:0; left:0;
+  pointer-events:none;         /* remove this if you want interaction */
 }
 
 /* Safety: ensure no previous micro rules leak onto these */
