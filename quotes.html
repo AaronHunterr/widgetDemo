@@ -1,184 +1,281 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex,nofollow" />
-  <title>Color Variants</title>
-  <link rel="stylesheet" href="./styles.css" />
-</head>
-<body>
-  <header class="site-header" id="siteHeader">
-    <div class="container header__inner">
-      <a class="brand" href="./"><span class="brand__mark" aria-hidden="true">⬤</span><span class="brand__text">Auto News Demo</span></a>
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
-      <nav class="site-nav" id="siteNav" aria-label="Primary">
-        <a href="./">News</a>
-        <a href="#">Reviews</a>
-        <a href="#">EVs</a>
-        <a href="./">Car Buying</a>
-        <a href="./widget.html">Car Quotes</a>
-        <a href="./quotes.html" class="is-active">Color Variants</a>
-        <a href="#">Ownership</a>
-        <a href="#">Videos</a>
-        <a href="#">Deals</a>
-      </nav>
-    </div>
-  </header>
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="noindex,nofollow" />
+        <title>Color Variants</title>
+        <link rel="stylesheet" href="./styles.css" />
+      </head>
+      <body>
+        <header class="site-header" id="siteHeader">
+          <div class="container header__inner">
+            <a class="brand" href="./"><span class="brand__mark" aria-hidden="true">⬤</span><span class="brand__text">Auto News Demo</span></a>
+            <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
+            <nav class="site-nav" id="siteNav" aria-label="Primary">
+              <a href="./">News</a>
+              <a href="#">Reviews</a>
+              <a href="#">EVs</a>
+              <a href="./">Car Buying</a>
+              <a href="./widget.html">Car Quotes</a>
+              <a href="./quotes.html" class="is-active">Car Shopping</a>
+              <a href="#">Ownership</a>
+              <a href="#">Videos</a>
+              <a href="#">Deals</a>
+            </nav>
+          </div>
+        </header>
 
-  <section class="hero">
-    <div class="container hero__inner">
-      <h1 class="hero__title">Color Variants & Layouts</h1>
-      <p class="hero__dek">Side-by-side at the top; stacked wide below. Each side has its own controls.</p>
-    </div>
-  </section>
+        <section class="hero">
+          <div class="container hero__inner">
+            <h1 class="hero__title">Color Variants & Layouts</h1>
+            <p class="hero__dek">Side-by-side above; stacked wide below. Copy any config.</p>
+          </div>
+        </section>
 
-  <main class="container quotes-wrap">
-    <!-- Row: controls for A and B -->
-    <div class="controls">
-      <div class="group" id="typeA">
-        <span class="label">Left:</span>
-        <button class="btn is-active" data-type="funnel">Funnel</button>
-        <button class="btn" data-type="funnel-compact">Compact</button>
-        <button class="btn" data-type="calculator">Calc</button>
-      </div>
-      <div class="group" id="colorA">
-        <span class="label">Color</span>
-        <span class="swatch is-active" style="background:#303745" data-color="#303745"></span>
-        <span class="swatch" style="background:#fd4e3f" data-color="#fd4e3f"></span>
-        <span class="swatch" style="background:#de2828" data-color="#de2828"></span>
-        <span class="swatch" style="background:#252629" data-color="#252629"></span>
-        <span class="swatch" style="background:#000000" data-color="#000000"></span>
-        <span class="swatch" style="background:#ffba3a" data-color="#ffba3a"></span>
-      </div>
+        <main class="container quotes-wrap">
 
-      <div class="group" id="typeB">
-        <span class="label">Right:</span>
-        <button class="btn is-active" data-type="funnel">Funnel</button>
-        <button class="btn" data-type="funnel-compact">Compact</button>
-        <button class="btn" data-type="calculator">Calc</button>
-      </div>
-      <div class="group" id="colorB">
-        <span class="label">Color</span>
-        <span class="swatch" style="background:#303745" data-color="#303745"></span>
-        <span class="swatch" style="background:#fd4e3f" data-color="#fd4e3f"></span>
-        <span class="swatch is-active" style="background:#de2828" data-color="#de2828"></span>
-        <span class="swatch" style="background:#252629" data-color="#252629"></span>
-        <span class="swatch" style="background:#000000" data-color="#000000"></span>
-        <span class="swatch" style="background:#ffba3a" data-color="#ffba3a"></span>
-      </div>
-    </div>
+          <!-- Controls row -->
+          <div class="controls">
+            <!-- LEFT controls -->
+            <div class="group" id="typeA">
+              <span class="label">Left:</span>
+              <button class="btn is-active" data-type="funnel">Funnel</button>
+              <button class="btn" data-type="funnel-compact">Compact</button>
+              <button class="btn" data-type="calculator">Calc</button>
+            </div>
+            <div class="group" id="colorA">
+              <span class="label">Color</span>
+              <span class="swatch is-active" style="background:#303745" data-color="#303745"></span>
+              <span class="swatch" style="background:#fd4e3f" data-color="#fd4e3f"></span>
+              <span class="swatch" style="background:#de2828" data-color="#de2828"></span>
+              <span class="swatch" style="background:#252629" data-color="#252629"></span>
+              <span class="swatch" style="background:#000000" data-color="#000000"></span>
+              <span class="swatch" style="background:#ffba3a" data-color="#ffba3a"></span>
+            </div>
+            <div class="group" id="targetA" style="display:none;">
+              <span class="label">Submit</span>
+              <button class="btn is-active" data-target="parent">Same tab</button>
+              <button class="btn" data-target="blank">New tab</button>
+            </div>
 
-    <!-- Top: side-by-side long view -->
-    <div class="quotes-grid">
-      <section class="quotes-card demo-panel"><div id="slotA"></div></section>
-      <section class="quotes-card demo-panel"><div id="slotB"></div></section>
-    </div>
+            <!-- RIGHT controls -->
+            <div class="group" id="typeB">
+              <span class="label">Right:</span>
+              <button class="btn is-active" data-type="funnel">Funnel</button>
+              <button class="btn" data-type="funnel-compact">Compact</button>
+              <button class="btn" data-type="calculator">Calc</button>
+            </div>
+            <div class="group" id="colorB">
+              <span class="label">Color</span>
+              <span class="swatch" style="background:#303745" data-color="#303745"></span>
+              <span class="swatch" style="background:#fd4e3f" data-color="#fd4e3f"></span>
+              <span class="swatch is-active" style="background:#de2828" data-color="#de2828"></span>
+              <span class="swatch" style="background:#252629" data-color="#252629"></span>
+              <span class="swatch" style="background:#000000" data-color="#000000"></span>
+              <span class="swatch" style="background:#ffba3a" data-color="#ffba3a"></span>
+            </div>
+            <div class="group" id="targetB" style="display:none;">
+              <span class="label">Submit</span>
+              <button class="btn is-active" data-target="parent">Same tab</button>
+              <button class="btn" data-target="blank">New tab</button>
+            </div>
+          </div>
 
-    <!-- Divider -->
-    <div style="height: 16px"></div>
+          <!-- Top: side-by-side -->
+          <div class="quotes-grid">
+            <section class="quotes-card demo-panel">
+              <div id="slotA" class="demo-panel"></div>
+              <div class="codebox">
+                <div class="bar">
+                  <span>Left snippet</span>
+                  <button class="copy-btn" id="copyA">Copy</button>
+                </div>
+                <pre><code id="codeA"></code></pre>
+              </div>
+            </section>
 
-    <!-- Bottom: stacked wide view (mirrors A & B) -->
-    <section class="quotes-card demo-panel" style="margin-bottom: 16px;"><div id="slotA_stack"></div></section>
-    <section class="quotes-card demo-panel"><div id="slotB_stack"></div></section>
-  </main>
+            <section class="quotes-card demo-panel">
+              <div id="slotB" class="demo-panel"></div>
+              <div class="codebox">
+                <div class="bar">
+                  <span>Right snippet</span>
+                  <button class="copy-btn" id="copyB">Copy</button>
+                </div>
+                <pre><code id="codeB"></code></pre>
+              </div>
+            </section>
+          </div>
 
-  <footer class="site-footer">
-    <div class="container footer__inner">
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="#">About</a><a href="#">Editorial Policy</a><a href="#">Contact</a><a href="#">Privacy</a>
-      </nav>
-      <p class="copyright">© <span id="year"></span> Demo Media.</p>
-    </div>
-  </footer>
+          <!-- Spacer -->
+          <div style="height:16px"></div>
 
-  <!-- Dynamic loader -->
-  <script src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget.js"></script>
-  <script>
-    // Shell polish
-    const siteHeader = document.getElementById('siteHeader');
-    addEventListener('scroll', () => siteHeader.classList.toggle('scrolled', scrollY > 6));
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const menuToggle = document.getElementById('menuToggle'), siteNav = document.getElementById('siteNav');
-    if (menuToggle && siteNav) menuToggle.onclick = () => siteNav.classList.toggle('open');
+          <!-- Bottom: stacked wide (mirrors A & B) -->
+          <section class="quotes-card demo-panel" style="margin-bottom:16px;">
+            <div id="slotA_stack" class="demo-panel"></div>
+            <div class="codebox">
+              <div class="bar">
+                <span>Left (stacked) snippet</span>
+                <button class="copy-btn" id="copyAStack">Copy</button>
+              </div>
+              <pre><code id="codeAStack"></code></pre>
+            </div>
+          </section>
 
-    // Dynamic engine
-    const dtc = window.dtc;
+          <section class="quotes-card demo-panel">
+            <div id="slotB_stack" class="demo-panel"></div>
+            <div class="codebox">
+              <div class="bar">
+                <span>Right (stacked) snippet</span>
+                <button class="copy-btn" id="copyBStack">Copy</button>
+              </div>
+              <pre><code id="codeBStack"></code></pre>
+            </div>
+          </section>
+        </main>
 
-    function buildRootEl(type, color) {
-      const el = document.createElement('div');
-      if (type === 'calculator') {
-        el.className = 'dt-car-payment-calculator';
-      } else {
-        el.className = 'dt-new-car-funnel';
-        if (type === 'funnel-compact') el.setAttribute('data-theme', 'compact');
-        el.setAttribute('data-make', 'Chevrolet');
-        el.setAttribute('data-model', 'Blazer');
-      }
-      el.setAttribute('data-gid', '0000-5200');
-      el.setAttribute('data-tenant', 'RSP1995');
-      el.setAttribute('data-color-primary', color);
-      el.setAttribute('data-font-primary', 'sofia-pro, sans-serif');
-      return el;
-    }
+        <footer class="site-footer">
+          <div class="container footer__inner">
+            <nav class="footer-nav" aria-label="Footer">
+              <a href="#">About</a><a href="#">Editorial Policy</a><a href="#">Contact</a><a href="#">Privacy</a>
+            </nav>
+            <p class="copyright">© <span id="year"></span> Demo Media.</p>
+          </div>
+        </footer>
 
-    function makeSlot(slotId, twinId, initial) {
-      const slot = document.getElementById(slotId);
-      const twin = document.getElementById(twinId); // stacked mirror
-      let state = { type: initial.type, color: initial.color };
-      const inst1 = new dtc.Widget({ slot: slotId.endsWith('_stack') ? 3 : 1 });
-      const inst2 = new dtc.Widget({ slot: slotId.endsWith('_stack') ? 4 : 2 });
+        <!-- Dynamic loader -->
+        <script src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget.js"></script>
+        <script>
+          // Shell polish
+          const siteHeader = document.getElementById('siteHeader');
+          addEventListener('scroll', () => siteHeader.classList.toggle('scrolled', scrollY > 6));
+          document.getElementById('year').textContent = new Date().getFullYear();
+          const menuToggle = document.getElementById('menuToggle'), siteNav = document.getElementById('siteNav');
+          if (menuToggle && siteNav) menuToggle.onclick = () => siteNav.classList.toggle('open');
 
-      async function render() {
-        // render side-by-side
-        slot.innerHTML = '';
-        const a = buildRootEl(state.type, state.color);
-        slot.appendChild(a);
-        await inst1.render(a);
-        // render mirror (stacked)
-        if (twin) {
-          twin.innerHTML = '';
-          const b = buildRootEl(state.type, state.color);
-          twin.appendChild(b);
-          await inst2.render(b);
-        }
-      }
-      render();
+          const dtc = window.dtc;
 
-      return {
-        setType: async (t) => { state.type = t; await inst1.unmount(); await inst2.unmount(); render(); },
-        setColor: async (c) => { state.color = c; await inst1.unmount(); await inst2.unmount(); render(); }
-      };
-    }
+          function buildRootEl(type, color, target) {
+            const el = document.createElement('div');
+            if (type === 'calculator') {
+              el.className = 'dt-car-payment-calculator';
+              el.setAttribute('data-submit-target', target);
+            } else {
+              el.className = 'dt-new-car-funnel';
+              if (type === 'funnel-compact') el.setAttribute('data-theme', 'compact');
+              el.setAttribute('data-make', 'Chevrolet');
+              el.setAttribute('data-model', 'Blazer');
+            }
+            el.setAttribute('data-gid', '0000-5200');
+            el.setAttribute('data-tenant', 'RSP1995');
+            el.setAttribute('data-color-primary', color);
+            el.setAttribute('data-font-primary', 'sofia-pro, sans-serif');
+            return el;
+          }
 
-    // Create slots: A controls slotA + slotA_stack; B controls slotB + slotB_stack
-    const slotA = makeSlot('slotA', 'slotA_stack', { type: 'funnel', color: '#303745' });
-    const slotB = makeSlot('slotB', 'slotB_stack', { type: 'funnel', color: '#de2828' });
+          function snippetFor(type, color, target) {
+            if (type === 'calculator') {
+              return `<div class="dt-car-payment-calculator"
+        data-gid="0000-5200"
+        data-tenant="RSP1995"
+        data-color-primary="${color}"
+        data-font-primary="sofia-pro, sans-serif"
+        data-submit-target="${target}"></div>`;
+            }
+            const theme = type === 'funnel-compact' ? `\n  data-theme="compact"` : '';
+            return `<div class="dt-new-car-funnel"
+        data-gid="0000-5200"
+        data-tenant="RSP1995"
+        data-make="Chevrolet"
+        data-model="Blazer"
+        data-color-primary="${color}"
+        data-font-primary="sofia-pro, sans-serif"${theme}></div>`;
+          }
 
-    // Wire controls
-    function wireType(groupId, handler) {
-      document.querySelectorAll('#' + groupId + ' .btn').forEach(btn => {
-        btn.addEventListener('click', async () => {
-          document.querySelectorAll('#' + groupId + ' .btn').forEach(b => b.classList.remove('is-active'));
-          btn.classList.add('is-active');
-          await handler(btn.dataset.type);
-        });
-      });
-    }
-    function wireColor(groupId, handler) {
-      document.querySelectorAll('#' + groupId + ' .swatch').forEach(s => {
-        s.addEventListener('click', async () => {
-          document.querySelectorAll('#' + groupId + ' .swatch').forEach(x => x.classList.remove('is-active'));
-          s.classList.add('is-active');
-          await handler(s.dataset.color);
-        });
-      });
-    }
+          function makeSlot(slotId, codeId, targetControlsId, initial, stackId, stackCodeId) {
+            const slot = document.getElementById(slotId);
+            const code = document.getElementById(codeId);
+            const stack = stackId ? document.getElementById(stackId) : null;
+            const stackCode = stackCodeId ? document.getElementById(stackCodeId) : null;
+            const targetControls = document.getElementById(targetControlsId);
+            let state = { ...initial };
+            const inst1 = new dtc.Widget({ slot: 1 });
+            const inst2 = new dtc.Widget({ slot: 2 });
 
-    wireType('typeA', t => slotA.setType(t));
-    wireColor('colorA', c => slotA.setColor(c));
-    wireType('typeB', t => slotB.setType(t));
-    wireColor('colorB', c => slotB.setColor(c));
-  </script>
-</body>
-</html>
+            async function render() {
+              // side-by-side
+              slot.innerHTML = '';
+              const a = buildRootEl(state.type, state.color, state.target);
+              slot.appendChild(a);
+              await inst1.render(a);
+              code.textContent = snippetFor(state.type, state.color, state.target);
+
+              // stacked mirror
+              if (stack) {
+                stack.innerHTML = '';
+                const b = buildRootEl(state.type, state.color, state.target);
+                stack.appendChild(b);
+                await inst2.render(b);
+                stackCode.textContent = snippetFor(state.type, state.color, state.target);
+              }
+
+              // show/hide calculator target controls
+              targetControls.style.display = (state.type === 'calculator') ? '' : 'none';
+            }
+            render();
+
+            return {
+              setType: async (t) => { state.type = t; await inst1.unmount(); await inst2.unmount(); render(); },
+              setColor: async (c) => { state.color = c; await inst1.unmount(); await inst2.unmount(); render(); },
+              setTarget: async (tg) => { state.target = tg; if (state.type === 'calculator') { await inst1.unmount(); await inst2.unmount(); render(); } }
+            };
+          }
+
+          const left = makeSlot('slotA','codeA','targetA',{ type:'funnel', color:'#303745', target:'parent' }, 'slotA_stack','codeAStack');
+          const right = makeSlot('slotB','codeB','targetB',{ type:'funnel', color:'#de2828', target:'parent' }, 'slotB_stack','codeBStack');
+
+          function wireType(groupId, setter) {
+            document.querySelectorAll('#'+groupId+' .btn').forEach(btn=>{
+              btn.addEventListener('click', async ()=>{
+                document.querySelectorAll('#'+groupId+' .btn').forEach(b=>b.classList.remove('is-active'));
+                btn.classList.add('is-active');
+                await setter(btn.dataset.type);
+              });
+            });
+          }
+          function wireColor(groupId, setter) {
+            document.querySelectorAll('#'+groupId+' .swatch').forEach(s=>{
+              s.addEventListener('click', async ()=>{
+                document.querySelectorAll('#'+groupId+' .swatch').forEach(x=>x.classList.remove('is-active'));
+                s.classList.add('is-active');
+                await setter(s.dataset.color);
+              });
+            });
+          }
+          function wireTarget(groupId, setter) {
+            document.querySelectorAll('#'+groupId+' .btn').forEach(btn=>{
+              btn.addEventListener('click', async ()=>{
+                document.querySelectorAll('#'+groupId+' .btn').forEach(b=>b.classList.remove('is-active'));
+                btn.classList.add('is-active');
+                await setter(btn.dataset.target);
+              });
+            });
+          }
+
+          wireType('typeA', t => left.setType(t));
+          wireColor('colorA', c => left.setColor(c));
+          wireTarget('targetA', tg => left.setTarget(tg));
+
+          wireType('typeB', t => right.setType(t));
+          wireColor('colorB', c => right.setColor(c));
+          wireTarget('targetB', tg => right.setTarget(tg));
+
+          // Copy buttons
+          const copy = (id) => navigator.clipboard.writeText(document.getElementById(id).textContent);
+          document.getElementById('copyA').onclick = () => copy('codeA');
+          document.getElementById('copyB').onclick = () => copy('codeB');
+          document.getElementById('copyAStack').onclick = () => copy('codeAStack');
+          document.getElementById('copyBStack').onclick = () => copy('codeBStack');
+        </script>
+      </body>
+      </html>

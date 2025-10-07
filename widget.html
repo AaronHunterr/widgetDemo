@@ -1,139 +1,194 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex,nofollow" />
-  <title>Car Quotes</title>
-  <link rel="stylesheet" href="./styles.css" />
-</head>
-<body>
-  <header class="site-header" id="siteHeader">
-    <div class="container header__inner">
-      <a class="brand" href="./"><span class="brand__mark" aria-hidden="true">⬤</span><span class="brand__text">Auto News Demo</span></a>
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
-      <nav class="site-nav" id="siteNav" aria-label="Primary">
-        <a href="./">News</a>
-        <a href="#">Reviews</a>
-        <a href="#">EVs</a>
-        <a href="./">Car Buying</a>
-        <a href="./widget.html" class="is-active">Car Quotes</a>
-        <a href="./quotes.html">Car Shopping</a>
-        <a href="#">Ownership</a>
-        <a href="#">Videos</a>
-        <a href="#">Deals</a>
-      </nav>
-    </div>
-  </header>
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="noindex,nofollow" />
+        <title>Car Quotes</title>
+        <link rel="stylesheet" href="./styles.css" />
+      </head>
+      <body>
+        <header class="site-header" id="siteHeader">
+          <div class="container header__inner">
+            <a class="brand" href="./"><span class="brand__mark" aria-hidden="true">⬤</span><span class="brand__text">Auto News Demo</span></a>
+            <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
+            <nav class="site-nav" id="siteNav" aria-label="Primary">
+              <a href="./">News</a>
+              <a href="#">Reviews</a>
+              <a href="#">EVs</a>
+              <a href="./">Car Buying</a>
+              <a href="./widget.html" class="is-active">Car Quotes</a>
+              <a href="./quotes.html">Car Shopping</a>
+              <a href="#">Ownership</a>
+              <a href="#">Videos</a>
+              <a href="#">Deals</a>
+            </nav>
+          </div>
+        </header>
 
-  <section class="hero">
-    <div class="container hero__inner">
-      <h1 class="hero__title">Car Quotes</h1>
-      <p class="hero__dek">Switch widget type and primary color dynamically (no reload).</p>
-    </div>
-  </section>
+        <section class="hero">
+          <div class="container hero__inner">
+            <h1 class="hero__title">Car Quotes</h1>
+            <p class="hero__dek">Switch widget type, primary color, and (for Calculator) the submit target. Copy the snippet below.</p>
+          </div>
+        </section>
 
-  <main class="container quotes-wrap">
-    <!-- Controls -->
-    <div class="controls">
-      <div class="group" id="typeControls">
-        <span class="label">Widget:</span>
-        <button class="btn is-active" data-type="funnel">New Car Funnel</button>
-        <button class="btn" data-type="funnel-compact">Funnel (Compact)</button>
-        <button class="btn" data-type="calculator">Calculator</button>
-      </div>
-      <div class="group" id="colorControls">
-        <span class="label">Color:</span>
-        <span class="swatch" style="background:#303745" data-color="#303745" title="#303745"></span>
-        <span class="swatch" style="background:#fd4e3f" data-color="#fd4e3f" title="#fd4e3f"></span>
-        <span class="swatch is-active" style="background:#de2828" data-color="#de2828" title="#de2828"></span>
-        <span class="swatch" style="background:#252629" data-color="#252629" title="#252629"></span>
-        <span class="swatch" style="background:#000000" data-color="#000000" title="#000000"></span>
-        <span class="swatch" style="background:#ffba3a" data-color="#ffba3a" title="#ffba3a"></span>
-      </div>
-    </div>
+        <main class="container quotes-wrap">
+          <!-- Controls -->
+          <div class="controls">
+            <div class="group" id="typeControls">
+              <span class="label">Widget:</span>
+              <button class="btn is-active" data-type="funnel">New Car Funnel</button>
+              <button class="btn" data-type="funnel-compact">Funnel (Compact)</button>
+              <button class="btn" data-type="calculator">Calculator</button>
+            </div>
 
-    <!-- Demo panel -->
-    <section class="demo-panel quotes-card">
-      <div id="widgetSingle"></div>
-    </section>
-  </main>
+            <div class="group" id="colorControls">
+              <span class="label">Color:</span>
+              <span class="swatch" style="background:#303745" data-color="#303745" title="#303745"></span>
+              <span class="swatch" style="background:#fd4e3f" data-color="#fd4e3f" title="#fd4e3f"></span>
+              <span class="swatch is-active" style="background:#de2828" data-color="#de2828" title="#de2828"></span>
+              <span class="swatch" style="background:#252629" data-color="#252629" title="#252629"></span>
+              <span class="swatch" style="background:#000000" data-color="#000000" title="#000000"></span>
+              <span class="swatch" style="background:#ffba3a" data-color="#ffba3a" title="#ffba3a"></span>
+            </div>
 
-  <footer class="site-footer">
-    <div class="container footer__inner">
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="#">About</a><a href="#">Editorial Policy</a><a href="#">Contact</a><a href="#">Privacy</a>
-      </nav>
-      <p class="copyright">© <span id="year"></span> Demo Media.</p>
-    </div>
-  </footer>
+            <!-- Calculator-only control -->
+            <div class="group" id="targetControls" style="display:none;">
+              <span class="label">Calculator submit:</span>
+              <button class="btn is-active" data-target="parent">Same tab</button>
+              <button class="btn" data-target="blank">New tab</button>
+            </div>
+          </div>
 
-  <!-- Dynamic loader -->
-  <script src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget.js"></script>
-  <script>
-    // Basic shell behavior
-    const siteHeader = document.getElementById('siteHeader');
-    addEventListener('scroll', () => siteHeader.classList.toggle('scrolled', scrollY > 6));
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const menuToggle = document.getElementById('menuToggle'), siteNav = document.getElementById('siteNav');
-    if (menuToggle && siteNav) menuToggle.onclick = () => siteNav.classList.toggle('open');
+          <!-- Widget panel (requested #2d3442) -->
+          <section class="demo-panel quotes-card">
+            <div id="widgetSingle" class="demo-panel"></div>
+          </section>
 
-    // --- Dynamic widget controls (single) ---
-    const dtc = window.dtc;
-    const root = document.getElementById('widgetSingle');
-    let current = { type: 'funnel', color: '#de2828' };
-    let instance = new dtc.Widget({ slot: 1 });
+          <!-- Copyable snippet -->
+          <section class="codebox">
+            <div class="bar">
+              <span>Copy embed snippet</span>
+              <button class="copy-btn" id="copySingle">Copy</button>
+            </div>
+            <pre><code id="codeSingle"></code></pre>
+          </section>
+        </main>
 
-    function buildRootEl({ type, color }) {
-      const el = document.createElement('div');
-      if (type === 'calculator') {
-        el.className = 'dt-car-payment-calculator';
-      } else {
-        el.className = 'dt-new-car-funnel';
-        if (type === 'funnel-compact') el.setAttribute('data-theme', 'compact');
-      }
-      el.setAttribute('data-gid', '0000-5200');
-      el.setAttribute('data-tenant', 'RSP1995');
-      el.setAttribute('data-color-primary', color);
-      el.setAttribute('data-font-primary', 'sofia-pro, sans-serif');
-      // keep your demo make/model
-      if (el.className.includes('funnel')) {
-        el.setAttribute('data-make', 'Chevrolet');
-        el.setAttribute('data-model', 'Blazer');
-      }
-      return el;
-    }
+        <footer class="site-footer">
+          <div class="container footer__inner">
+            <nav class="footer-nav" aria-label="Footer">
+              <a href="#">About</a><a href="#">Editorial Policy</a><a href="#">Contact</a><a href="#">Privacy</a>
+            </nav>
+            <p class="copyright">© <span id="year"></span> Demo Media.</p>
+          </div>
+        </footer>
 
-    async function renderSingle() {
-      root.innerHTML = '';
-      const mount = buildRootEl(current);
-      root.appendChild(mount);
-      await instance.render(mount);
-    }
+        <!-- Dynamic loader -->
+        <script src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget.js"></script>
+        <script>
+          // Shell
+          const siteHeader = document.getElementById('siteHeader');
+          addEventListener('scroll', () => siteHeader.classList.toggle('scrolled', scrollY > 6));
+          document.getElementById('year').textContent = new Date().getFullYear();
+          const menuToggle = document.getElementById('menuToggle'), siteNav = document.getElementById('siteNav');
+          if (menuToggle && siteNav) menuToggle.onclick = () => siteNav.classList.toggle('open');
 
-    // Type buttons
-    document.querySelectorAll('#typeControls .btn').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        document.querySelectorAll('#typeControls .btn').forEach(b => b.classList.remove('is-active'));
-        btn.classList.add('is-active');
-        current.type = btn.dataset.type;
-        await instance.unmount();
-        renderSingle();
-      });
-    });
+          // Dynamic single widget
+          const dtc = window.dtc;
+          const root = document.getElementById('widgetSingle');
+          let state = { type: 'funnel', color: '#de2828', target: 'parent' };
+          let instance = new dtc.Widget({ slot: 1 });
 
-    // Color swatches
-    document.querySelectorAll('#colorControls .swatch').forEach(s => {
-      s.addEventListener('click', async () => {
-        document.querySelectorAll('#colorControls .swatch').forEach(x => x.classList.remove('is-active'));
-        s.classList.add('is-active');
-        current.color = s.dataset.color;
-        await instance.unmount();
-        renderSingle();
-      });
-    });
+          function buildRootEl({ type, color, target }) {
+            const el = document.createElement('div');
+            if (type === 'calculator') {
+              el.className = 'dt-car-payment-calculator';
+              el.setAttribute('data-submit-target', target);
+            } else {
+              el.className = 'dt-new-car-funnel';
+              if (type === 'funnel-compact') el.setAttribute('data-theme', 'compact');
+              el.setAttribute('data-make', 'Chevrolet');
+              el.setAttribute('data-model', 'Blazer');
+            }
+            el.setAttribute('data-gid', '0000-5200');
+            el.setAttribute('data-tenant', 'RSP1995');
+            el.setAttribute('data-color-primary', color);
+            el.setAttribute('data-font-primary', 'sofia-pro, sans-serif');
+            return el;
+          }
 
-    renderSingle();
-  </script>
-</body>
-</html>
+          function snippetFor({ type, color, target }) {
+            if (type === 'calculator') {
+              return `<div class="dt-car-payment-calculator"
+        data-gid="0000-5200"
+        data-tenant="RSP1995"
+        data-color-primary="${color}"
+        data-font-primary="sofia-pro, sans-serif"
+        data-submit-target="${target}"></div>`;
+            }
+            const theme = type === 'funnel-compact' ? `\n  data-theme="compact"` : '';
+            return `<div class="dt-new-car-funnel"
+        data-gid="0000-5200"
+        data-tenant="RSP1995"
+        data-make="Chevrolet"
+        data-model="Blazer"
+        data-color-primary="${color}"
+        data-font-primary="sofia-pro, sans-serif"${theme}></div>`;
+          }
+
+          async function renderSingle() {
+            root.innerHTML = '';
+            const mount = buildRootEl(state);
+            root.appendChild(mount);
+            await instance.render(mount);
+            document.getElementById('codeSingle').textContent = snippetFor(state);
+            document.getElementById('targetControls').style.display = (state.type === 'calculator') ? '' : 'none';
+          }
+
+          // Wire type buttons
+          document.querySelectorAll('#typeControls .btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+              document.querySelectorAll('#typeControls .btn').forEach(b => b.classList.remove('is-active'));
+              btn.classList.add('is-active');
+              state.type = btn.dataset.type;
+              await instance.unmount();
+              renderSingle();
+            });
+          });
+
+          // Wire color swatches
+          document.querySelectorAll('#colorControls .swatch').forEach(s => {
+            s.addEventListener('click', async () => {
+              document.querySelectorAll('#colorControls .swatch').forEach(x => x.classList.remove('is-active'));
+              s.classList.add('is-active');
+              state.color = s.dataset.color;
+              await instance.unmount();
+              renderSingle();
+            });
+          });
+
+          // Wire calculator target
+          document.querySelectorAll('#targetControls .btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+              document.querySelectorAll('#targetControls .btn').forEach(b => b.classList.remove('is-active'));
+              btn.classList.add('is-active');
+              state.target = btn.dataset.target;
+              if (state.type === 'calculator') {
+                await instance.unmount();
+                renderSingle();
+              }
+            });
+          });
+
+          // Copy
+          document.getElementById('copySingle').addEventListener('click', () => {
+            const text = document.getElementById('codeSingle').textContent;
+            navigator.clipboard.writeText(text);
+          });
+
+          renderSingle();
+        </script>
+      </body>
+      </html>
