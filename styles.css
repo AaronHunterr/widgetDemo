@@ -272,7 +272,6 @@ copyright, .copyright{ color:#b6bdca; margin-top:10px; font-size:.95rem; }
   transform-origin:top left;
   position:absolute;
   top:0; left:0;
-  pointer-events:none;         /* remove this if you want interaction */
 }
 
 /* Safety: ensure no previous micro rules leak onto these */
