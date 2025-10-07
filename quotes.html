@@ -1,242 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>Car Buying – Demo</title>
-  <meta name="description" content="Demo category page with a right-rail widget slot and editorial layout." />
-
-  <!-- NOTE: Sofia Pro is a paid font. We reference it in CSS as a family name so your licensed kit can supply it.
-       Without a license, the page will fall back to system sans. -->
-  <!-- If you have a license/CDN kit, add it here. Example:
-  <link rel="stylesheet" href="https://use.typekit.net/XXXXXXX.css"> -->
-
+  <title>Car Quotes – Side-by-Side</title>
   <link rel="stylesheet" href="./styles.css" />
+  <style>
+    /* simple grid for this page */
+    .quotes-wrap { padding: 24px 0 48px; }
+    .quotes-grid { display: grid; gap: 24px; }
+    @media (min-width: 1024px){ .quotes-grid { grid-template-columns: 1fr 1fr; } }
+    .quotes-card { background:#fff; border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow-1); }
+    .quotes-card__hd { padding:12px 14px; border-bottom:1px solid var(--border); font-weight:800; }
+    .quotes-card__bd { padding:0; } /* let widget use full width */
+  </style>
 </head>
-
 <body>
-  <!-- Top utility bar -->
-  <div class="topbar">
-    <div class="container topbar__inner">
-      <span class="topbar__badge">Demo</span>
-      <span class="topbar__msg">This is a non-branded, non-affiliated mock for internal testing.</span>
-    </div>
-  </div>
-
-  <!-- Header / Nav -->
+  <!-- reuse your existing header -->
   <header class="site-header" id="siteHeader">
     <div class="container header__inner">
-      <a class="brand" href="#">
+      <a class="brand" href="./">
         <span class="brand__mark" aria-hidden="true">⬤</span>
         <span class="brand__text">Auto News Demo</span>
       </a>
-
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
-        ☰
-      </button>
-
-      <!-- in the header nav -->
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
       <nav class="site-nav" id="siteNav" aria-label="Primary">
-        <a href="#">News</a>
+        <a href="./">News</a>
         <a href="#">Reviews</a>
         <a href="#">EVs</a>
-        <a href="#" class="is-active">Car Buying</a>
-        <a href="widget.html">Car Quotes</a> <!-- NEW -->
-        <a href="#">Ownership</a>
+        <a href="./">Car Buying</a>
+        <a href="./widget.html" class="is-active">Car Quotes</a>
+        <a href="./quotes.html" class="is-active">Color Variant</a>
         <a href="#">Videos</a>
         <a href="#">Deals</a>
       </nav>
-
     </div>
   </header>
 
-  <!-- Leaderboard ad placeholder (now on dark background) -->
-  <div class="container ad ad--leaderboard" role="complementary" aria-label="Ad">
-    <div class="ad__label">Advertisement</div>
-    <div class="ad__box">Leaderboard 970×250</div>
-  </div>
-
-  <!-- Category hero -->
   <section class="hero">
     <div class="container hero__inner">
-      <h1 class="hero__title">Car Buying</h1>
-      <p class="hero__dek">Guides, deals, financing tips, and tools to make your next purchase easier.</p>
-
-      <div class="pill-nav" role="navigation" aria-label="Category filters">
-        <button class="pill is-active">All</button>
-        <button class="pill">How-To</button>
-        <button class="pill">Used</button>
-        <button class="pill">Finance</button>
-        <button class="pill">Deals</button>
-      </div>
+      <h1 class="hero__title">Car Quotes – Color Variants</h1>
+      <p class="hero__dek">Same configuration, different <code>data-color-primary</code> for a visual comparison.</p>
     </div>
   </section>
 
-  <!-- Main layout -->
-  <main class="container layout">
-    <!-- Main content -->
-    <section class="main-col">
-
-      <!-- Featured row -->
-      <div class="featured">
-        <article class="card card--featured">
-          <a class="card__media" href="#">
-            <img src="https://picsum.photos/seed/featured1/1200/675" alt="Featured story image">
-          </a>
-          <div class="card__body">
-            <a href="#" class="kicker">HOW-TO</a>
-            <h2 class="card__title">
-              <a href="#">How to buy a car online in 2025: A step-by-step playbook</a>
-            </h2>
-            <p class="card__excerpt">From setting a budget to arranging delivery, this walkthrough covers each decision point so you get the right car at the right price.</p>
-            <div class="card__meta">By Demo Author · Oct 6, 2025</div>
-          </div>
-        </article>
-
-        <div class="featured__stack">
-          <article class="card card--stacked">
-            <a class="card__media" href="#">
-              <img src="https://picsum.photos/seed/featured2/800/600" alt="Story image">
-            </a>
-            <div class="card__body">
-              <a href="#" class="kicker">DEALS</a>
-              <h3 class="card__title"><a href="#">Best 0% APR offers this month</a></h3>
-            </div>
-          </article>
-          <article class="card card--stacked">
-            <a class="card__media" href="#">
-              <img src="https://picsum.photos/seed/featured3/800/600" alt="Story image">
-            </a>
-            <div class="card__body">
-              <a href="#" class="kicker">USED</a>
-              <h3 class="card__title"><a href="#">10 great used cars under $20k</a></h3>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <!-- INLINE WIDGET: Funnel (Regular) -->
-      <section class="widget-box">
-        <h2 class="widget-box__title">Find Your Deal (Funnel — Regular)</h2>
-        <div class="widget-slot">
-          <div class="dt-new-car-funnel" data-gid="0000-5200" data-tenant="RSP1995" data-make="Chevrolet" data-model="Blazer" data-color-primary="#DE2828" data-font-primary="sofia-pro, sans-serif">
+  <main class="container quotes-wrap">
+    <div class="quotes-grid">
+      <!-- LEFT: Funnel with #303745 -->
+      <section class="quotes-card">
+        <div class="quotes-card__hd">Primary Color: #303745</div>
+        <div class="quotes-card__bd">
+          <div
+            class="dt-new-car-funnel"
+            data-gid="0000-5200"
+            data-tenant="RSP1995"
+            data-make="Chevrolet"
+            data-model="Blazer"
+            data-color-primary="#303745"
+            data-font-primary="sofia-pro, sans-serif">
           </div>
         </div>
       </section>
 
-      <!-- Compact Funnel — Mini (whole widget scaled, not cropped) -->
-      <section class="widget-box">
-        <h2 class="widget-box__title">Compact Funnel — Mini Preview (full widget)</h2>
-        <div class="widget-slot">
-          <div class="mini-widget">
-            <div class="mini-scaler" style="--base-width:1024px; --scale:0.52;">
-              <div class="mini-scaler__content">
-                <div class="dt-new-car-funnel" data-gid="0000-5200" data-tenant="RSP1995" data-make="Chevrolet" data-model="Blazer" data-color-primary="#DE2828" data-font-primary="sofia-pro, sans-serif" data-theme="compact">
-                </div>
-              </div>
-            </div>
+      <!-- RIGHT: Funnel with #DE2828 (your original red) -->
+      <section class="quotes-card">
+        <div class="quotes-card__hd">Primary Color: #DE2828</div>
+        <div class="quotes-card__bd">
+          <div
+            class="dt-new-car-funnel"
+            data-gid="0000-5200"
+            data-tenant="RSP1995"
+            data-make="Chevrolet"
+            data-model="Blazer"
+            data-color-primary="#DE2828"
+            data-font-primary="sofia-pro, sans-serif">
           </div>
         </div>
       </section>
-
-      <!-- Regular Funnel — Mini (whole widget scaled, not cropped) -->
-      <section class="widget-box">
-        <h2 class="widget-box__title">Regular Funnel — Mini Preview (full widget)</h2>
-        <div class="widget-slot">
-          <div class="mini-widget">
-            <div class="mini-scaler" style="--base-width:1024px; --scale:0.48;">
-              <div class="mini-scaler__content">
-                <div class="dt-new-car-funnel" data-gid="0000-5200" data-tenant="RSP1995" data-make="Chevrolet" data-model="Blazer" data-color-primary="#DE2828" data-font-primary="sofia-pro, sans-serif">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Grid of stories -->
-      <div class="grid" id="grid">
-        <article class="card">
-          <a class="card__media" href="#">
-            <img src="https://picsum.photos/seed/a1/640/360" alt="Story image">
-          </a>
-          <div class="card__body">
-            <a href="#" class="kicker">FINANCE</a>
-            <h3 class="card__title"><a href="#">Leasing vs. buying: What really costs less in 2025?</a></h3>
-            <p class="card__excerpt">Run the numbers on term length, APR, and residuals to see the break-even point.</p>
-            <div class="card__meta">5 min read · Guides</div>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="card__media" href="#">
-            <img src="https://picsum.photos/seed/a2/640/360" alt="Story image">
-          </a>
-          <div class="card__body">
-            <a href="#" class="kicker">HOW-TO</a>
-            <h3 class="card__title"><a href="#">Get top dollar for your trade-in</a></h3>
-            <p class="card__excerpt">Prep, photos, timing and the negotiation script that works.</p>
-            <div class="card__meta">7 min read · Tips</div>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="card__media" href="#">
-            <img src="https://picsum.photos/seed/a3/640/360" alt="Story image">
-          </a>
-          <div class="card__body">
-            <a href="#" class="kicker">DEALS</a>
-            <h3 class="card__title"><a href="#">Hidden incentives: How to spot them</a></h3>
-            <p class="card__excerpt">Manufacturer cash, loyalty, and dealer-specific programs explained.</p>
-            <div class="card__meta">4 min read · Deals</div>
-          </div>
-        </article>
-      </div>
-
-      <div class="loadmore-wrap">
-        <button class="btn" id="loadMore">Load more</button>
-      </div>
-    </section>
-
-    <!-- Right rail -->
-    <aside class="rail" aria-label="Sidebar">
-      <!-- Right-rail widget: Funnel (Compact) -->
-      <section class="widget-box">
-        <h2 class="widget-box__title">Deals Finder (Funnel — Compact)</h2>
-        <div class="widget-slot">
-          <div class="dt-new-car-funnel" data-gid="0000-5200" data-tenant="RSP1995" data-make="Chevrolet" data-model="Blazer" data-color-primary="#DE2828" data-font-primary="sofia-pro, sans-serif" data-theme="compact">
-          </div>
-        </div>
-      </section>
-
-      <!-- In-rail ad placeholder -->
-      <div class="ad ad--mpu" role="complementary" aria-label="Ad">
-        <div class="ad__label">Advertisement</div>
-        <div class="ad__box">MPU 300×250</div>
-      </div>
-
-      <!-- Right-rail widget: Calculator -->
-      <section class="widget-box">
-        <h2 class="widget-box__title">Payment Calculator</h2>
-        <div class="widget-slot">
-          <div class="dt-car-payment-calculator" data-gid="0000-5200" data-tenant="RSP1995" data-color-primary="#DE2828" data-font-primary="sofia-pro, sans-serif" data-submit-target="blank">
-          </div>
-        </div>
-      </section>
-
-      <!-- Popular / tools box -->
-      <section class="widget-box">
-        <h2 class="widget-box__title">Popular Guides</h2>
-        <ul class="list">
-          <li><a href="#">Certified pre-owned: worth it?</a></li>
-          <li><a href="#">Extended warranties decoded</a></li>
-          <li><a href="#">How to negotiate the OTD price</a></li>
-          <li><a href="#">What to check on delivery day</a></li>
-        </ul>
-      </section>
-    </aside>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -244,15 +86,12 @@
       <nav class="footer-nav" aria-label="Footer">
         <a href="#">About</a><a href="#">Editorial Policy</a><a href="#">Contact</a><a href="#">Privacy</a>
       </nav>
-      <p class="copyright">© <span id="year"></span> Demo Media. For internal demonstration only; not affiliated with any car site.</p>
+      <p class="copyright">© <span id="year"></span> Demo Media.</p>
     </div>
   </footer>
 
-  <!-- Rydeshopper widget loader (initializes all .dt-* instances above) -->
-  <script type="text/javascript" src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget-inline.js"></script>
-
-  <!-- Page scripts -->
+  <!-- Rydeshopper widgets -->
+  <script src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget-inline.js"></script>
   <script src="./app.js"></script>
 </body>
-
 </html>
