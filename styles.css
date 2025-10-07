@@ -243,52 +243,53 @@ copyright, .copyright{ color:#b6bdca; margin-top:10px; font-size:.95rem; }
   .site-nav a{ padding:14px var(--gutter); border-bottom:1px solid #475062; }
   .site-nav.open{ transform:none; opacity:1; pointer-events:auto; }
 }
-/* ===== Micro previews: wide inner canvas + small clipped viewport ===== */
-/* Do NOT touch the widget element’s styles. We only size/position wrappers. */
-
-/* Small card-like viewport (what you see on the page) */
+/* ==== Micro previews: scale the WRAPPER (not the widget), then crop ==== */
+/* Small card-like viewport */
 .micro-widget{
-  width: 380px;           /* preview width (tweak to taste) */
-  height: 320px;          /* preview height (about the vehicle-card height) */
+  width: 420px;               /* preview width */
+  height: 320px;              /* preview height */
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 12px;
   box-shadow: var(--shadow-1);
   position: relative;
-  overflow: hidden;       /* clip anything outside */
+  overflow: hidden;           /* crop to this box */
   margin: 0 auto;
 }
 
-/* Fill the card and isolate stacking */
 .micro-viewport{
   position: absolute;
   inset: 0;
   overflow: hidden;
-  isolation: isolate;
 }
 
-/* This is the ONLY trick:
-   Give the widget a wide, fixed-width *internal canvas* so it renders naturally.
-   We’re not styling the widget—just its parent wrapper width. */
+/* Big internal canvas so the widget picks its normal desktop layout.
+   We SCALE/PAN this wrapper only (not the widget). */
 .micro-content{
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: var(--shift-y, -180px);   /* vertical aim; adjust per variant below */
-  width: 960px;                  /* wide canvas so widget chooses desktop layout */
+  top: 0;
+  left: 0;
+  width: 1024px;              /* natural wide canvas for widget layout */
   max-width: none;
-  pointer-events: none;          /* makes preview feel like a thumbnail (optional) */
+  transform-origin: top left; /* important for predictable panning */
+  pointer-events: none;       /* make previews feel non-interactive */
 }
 
-/* Variant offsets to aim the visible slice (adjust to taste) */
-.micro-widget--compact { --shift-y: -130px; }   /* shows title + dropdowns + vehicle card */
-.micro-widget--regular { --shift-y: -200px; }   /* trims headline/form, shows left column */
+/* Aim the crop (adjust numbers to taste) */
+.micro-widget--compact .micro-content{
+  /* show headline + dropdowns + vehicle card */
+  transform: translate(-235px, -18px) scale(0.52);
+}
+.micro-widget--regular .micro-content{
+  /* show left column (title/dropdowns/vehicle card); trim most of form */
+  transform: translate(-295px, -26px) scale(0.50);
+}
 
-/* Hard reset: if any earlier rules touched the widget itself, neutralize without restyling */
+/* Safety reset in case any earlier rules hit the widget directly */
 .micro-content > .dt-new-car-funnel,
 .micro-content > .dt-car-payment-calculator{
-  position: static !important;
-  width: auto !important;       /* the widget uses width:100%; that’ll be 960px from parent */
+  width: auto !important;
   max-width: none !important;
+  position: static !important;
   transform: none !important;
 }
