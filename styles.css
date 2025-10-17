@@ -341,3 +341,13 @@ copyright, .copyright{ color:#b6bdca; margin-top:10px; font-size:.95rem; }
   margin: 0; padding: 10px; overflow: auto; color: #f8fafc; font-size: .92rem;
   white-space: pre; tab-size: 2;
 }
+/* small inputs for custom hex entry */
+.controls .hex-input {
+  display:flex; gap:8px; align-items:center;
+  background:#2b3240; border:1px solid #475062; border-radius:999px; padding:6px 8px;
+}
+.controls .hex-input input[type="text"]{
+  background:transparent; border:none; color:#e5e7eb; width:110px; outline:none;
+  font-weight:700; letter-spacing:.5px;
+}
+.controls .hex-input .btn{ padding:.4rem .7rem; }
