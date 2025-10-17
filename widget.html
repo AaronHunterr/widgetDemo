@@ -5,120 +5,161 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>Car Quotes</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>Widget Test</title>
   <link rel="stylesheet" href="./styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #303745;
+      color: #fff;
+    }
+
+    .demo-panel {
+      background: #2d3442;
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .controls {
+      margin-bottom: 16px;
+    }
+
+    .controls .group {
+      margin-bottom: 8px;
+    }
+
+    .btn {
+      background: #475062;
+      border: none;
+      color: #fff;
+      border-radius: 6px;
+      padding: 6px 12px;
+      margin: 2px;
+      cursor: pointer;
+    }
+
+    .btn.is-active {
+      background: #de2828;
+    }
+
+    .swatch {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 0 3px;
+      border: 2px solid #fff3;
+    }
+
+    .swatch.is-active {
+      border: 2px solid #fff;
+    }
+
+    .codebox {
+      background: #1e232f;
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 12px;
+    }
+
+    .codebox pre {
+      color: #eee;
+      overflow: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .copy-btn {
+      background: #de2828;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
-  <header class="site-header" id="siteHeader">
-    <div class="container header__inner">
-      <a class="brand" href="./"><span class="brand__mark" aria-hidden="true">⬤</span><span class="brand__text">Auto News Demo</span></a>
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
-      <nav class="site-nav" id="siteNav" aria-label="Primary">
-        <a href="./">News</a>
-        <a href="#">Reviews</a>
-        <a href="#">EVs</a>
-        <a href="./">Car Buying</a>
-        <a href="./widget.html" class="is-active">Car Quotes</a>
-        <a href="./quotes.html">Car Shopping</a>
-        <a href="#">Ownership</a>
-        <a href="#">Videos</a>
-        <a href="#">Deals</a>
+  <header class="site-header">
+    <div class="container">
+      <nav class="site-nav" style="display:flex; gap:16px; padding:10px 0;">
+        <a href="./widget.html" style="color:white; font-weight:700;">Widget Test</a>
+        <a href="./quotes.html" style="color:white;">Widget Comparison</a>
       </nav>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="container hero__inner">
-      <h1 class="hero__title">Car Quotes</h1>
-      <p class="hero__dek">Pick any widget type, set the color (or enter your own HEX), and copy the snippet.</p>
-    </div>
-  </section>
+  <main class="container" style="padding:20px;">
+    <h1 style="margin-bottom:10px;">Widget Test</h1>
+    <p style="margin-bottom:20px;">Select a widget type and color, or enter a custom HEX value. Copy your embed snippet below.</p>
 
-  <main class="container quotes-wrap">
-    <!-- CONTROLS -->
     <div class="controls" id="controlsSingle">
-      <!-- Widget types (major families only) -->
       <div class="group" id="typeControls">
-        <span class="label">Widget:</span>
-        <button class="btn is-active" data-type="new-car-funnel">Funnel</button>
+        <span>Widget:</span>
+        <button class="btn is-active" data-type="new-car-funnel">New Car Funnel</button>
         <button class="btn" data-type="new-car-funnel-compact">Funnel (Compact)</button>
-
-        <button class="btn" data-type="new-car-quote">New Quote</button>
-        <button class="btn" data-type="new-car-quote-minimal">New Quote (Minimal)</button>
-
-        <button class="btn" data-type="used-car-quote">Used Quote</button>
-        <button class="btn" data-type="used-car-quote-minimal">Used Quote (Minimal)</button>
-
-        <button class="btn" data-type="new-car-image">New Image</button>
-        <button class="btn" data-type="new-car-image-compact">New Image (Compact)</button>
-
-        <button class="btn" data-type="used-car-image">Used Image</button>
-
+        <button class="btn" data-type="new-car-quote">New Car Quote</button>
+        <button class="btn" data-type="new-car-quote-minimal">New Car Quote (Minimal)</button>
+        <button class="btn" data-type="used-car-quote">Used Car Quote</button>
+        <button class="btn" data-type="used-car-quote-minimal">Used Car Quote (Minimal)</button>
+        <button class="btn" data-type="new-car-image">New Car Image</button>
+        <button class="btn" data-type="new-car-image-compact">New Car Image (Compact)</button>
+        <button class="btn" data-type="used-car-image">Used Car Image</button>
         <button class="btn" data-type="calculator">Calculator</button>
         <button class="btn" data-type="used-pay-body">Used by Payment & Body</button>
         <button class="btn" data-type="used-pay-mm">Used by Payment, Make & Model</button>
-
-
       </div>
 
-      <!-- Color presets + custom HEX -->
       <div class="group" id="colorControls">
-        <span class="label">Color:</span>
-        <span class="swatch is-active" style="background:#de2828" data-color="#de2828" title="#de2828"></span>
-        <span class="swatch" style="background:#303745" data-color="#303745" title="#303745"></span>
-        <span class="swatch" style="background:#fd4e3f" data-color="#fd4e3f" title="#fd4e3f"></span>
-        <span class="swatch" style="background:#252629" data-color="#252629" title="#252629"></span>
-        <span class="swatch" style="background:#000000" data-color="#000000" title="#000000"></span>
-        <span class="swatch" style="background:#ffba3a" data-color="#ffba3a" title="#ffba3a"></span>
-        <div class="hex-input">
-          <input id="hexInputSingle" type="text" placeholder="#RRGGBB" maxlength="7" />
-          <button class="btn" id="applyHexSingle">Apply</button>
-        </div>
+        <span>Color:</span>
+        <span class="swatch is-active" style="background:#de2828" data-color="#de2828"></span>
+        <span class="swatch" style="background:#303745" data-color="#303745"></span>
+        <span class="swatch" style="background:#fd4e3f" data-color="#fd4e3f"></span>
+        <span class="swatch" style="background:#252629" data-color="#252629"></span>
+        <span class="swatch" style="background:#000000" data-color="#000000"></span>
+        <span class="swatch" style="background:#ffba3a" data-color="#ffba3a"></span>
+        <input id="hexInputSingle" type="text" placeholder="#RRGGBB" maxlength="7" style="margin-left:8px; padding:4px; border-radius:4px; border:1px solid #ccc;" />
+        <button class="btn" id="applyHexSingle">Apply</button>
       </div>
 
-      <!-- Calculator/Quote/Image/Used-Payment submit-target -->
       <div class="group" id="targetControls" style="display:none;">
-        <span class="label">Submit:</span>
-        <button class="btn is-active" data-target="parent">Same tab</button>
-        <button class="btn" data-target="blank">New tab</button>
+        <span>Submit:</span>
+        <button class="btn is-active" data-target="parent">Same Tab</button>
+        <button class="btn" data-target="blank">New Tab</button>
       </div>
     </div>
 
-    <!-- WIDGET PANEL -->
-    <section class="quotes-card demo-panel">
-      <div id="widgetSingle" class="demo-panel"></div>
+    <section class="demo-panel">
+      <div id="widgetSingle"></div>
+    </section>
+
+    <section class="codebox">
+      <div class="bar"><span>Copy embed snippet</span><button class="copy-btn" id="copySingle">Copy</button></div>
+      <pre><code id="codeSingle"></code></pre>
+    </section>
+
+    <section class="codebox">
+      <div class="bar"><span>Script tag (place before &lt;/body&gt;)</span><button class="copy-btn" id="copyInlineSingle">Copy</button></div>
+      <pre><code id="codeInlineSingle">&lt;script type="text/javascript" src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget-inline.js"&gt;&lt;/script&gt;</code></pre>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer__inner">
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="#">About</a><a href="#">Editorial Policy</a><a href="#">Contact</a><a href="#">Privacy</a>
-      </nav>
-      <p class="copyright">© <span id="year"></span> Demo Media.</p>
-    </div>
-  </footer>
-
-  <!-- Dynamic loader (required at end) -->
   <script src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget.js"></script>
   <script>
-    // Shell polish
-    const siteHeader = document.getElementById('siteHeader');
-    addEventListener('scroll', () => siteHeader.classList.toggle('scrolled', scrollY > 6));
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const menuToggle = document.getElementById('menuToggle'),
-      siteNav = document.getElementById('siteNav');
-    if (menuToggle && siteNav) menuToggle.onclick = () => siteNav.classList.toggle('open');
-
-    // ---- Single widget dynamic engine ----
     const dtc = window.dtc;
     const root = document.getElementById('widgetSingle');
-    const VALID_HEX = /^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})$/;
-
-    // helpers: capability matrix
     const supportsSubmit = t => ['calculator', 'new-car-quote', 'new-car-quote-minimal', 'used-car-quote', 'used-car-quote-minimal', 'new-car-image', 'new-car-image-compact', 'used-car-image', 'used-pay-body', 'used-pay-mm'].includes(t);
+    const VALID_HEX = /^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})$/;
 
     function classFor(type) {
       switch (type) {
@@ -128,73 +169,49 @@
           return ['dt-new-car-funnel', {
             'data-theme': 'compact'
           }];
-
         case 'new-car-quote':
           return ['dt-new-car-quote', {}];
         case 'new-car-quote-minimal':
           return ['dt-new-car-quote', {
             'data-theme': 'minimal'
           }];
-
         case 'used-car-quote':
           return ['dt-used-car-quote', {}];
         case 'used-car-quote-minimal':
           return ['dt-used-car-quote', {
             'data-theme': 'minimal'
           }];
-
         case 'new-car-image':
           return ['dt-new-car-image', {}];
         case 'new-car-image-compact':
           return ['dt-new-car-image', {
             'data-theme': 'compact'
           }];
-
         case 'used-car-image':
           return ['dt-used-car-image', {}];
-
         case 'calculator':
           return ['dt-car-payment-calculator', {}];
         case 'used-pay-body':
           return ['dt-used-car-payment-body-type', {}];
         case 'used-pay-mm':
           return ['dt-used-car-payment-makes-models', {}];
-
-
       }
     }
-
-    let state = {
-      type: 'new-car-funnel',
-      color: '#de2828',
-      target: 'parent'
-    };
-    let instance = new dtc.Widget({
-      slot: 1
-    });
 
     function buildRootEl({
       type,
       color,
       target
     }) {
-      const [klass, extraAttrs] = classFor(type);
+      const [klass, extra] = classFor(type);
       const el = document.createElement('div');
       el.className = klass;
-
-      // common attrs
       el.setAttribute('data-gid', '0000-5200');
       el.setAttribute('data-tenant', 'RSP1995');
       el.setAttribute('data-color-primary', color);
-      el.setAttribute('data-font-primary', 'sofia-pro, sans-serif');
-
-      // theme flags
-      Object.entries(extraAttrs).forEach(([k, v]) => el.setAttribute(k, v));
-
-      // submit-target (where supported)
+      el.setAttribute('data-font-primary', 'Poppins, sans-serif');
+      Object.entries(extra).forEach(([k, v]) => el.setAttribute(k, v));
       if (supportsSubmit(type)) el.setAttribute('data-submit-target', target);
-
-      // nice default make/model when funnel (optional on others)
       if (klass === 'dt-new-car-funnel') {
         el.setAttribute('data-make', 'Chevrolet');
         el.setAttribute('data-model', 'Blazer');
@@ -213,7 +230,7 @@
         'data-gid': '0000-5200',
         'data-tenant': 'RSP1995',
         'data-color-primary': color,
-        'data-font-primary': 'sofia-pro, sans-serif',
+        'data-font-primary': 'Poppins, sans-serif',
         ...(supportsSubmit(type) ? {
           'data-submit-target': target
         } : {}),
@@ -223,60 +240,54 @@
         } : {}),
         ...extra
       };
-      const lines = Object.entries(attrs).map(([k, v]) => {
-        if (k === 'class') return `class="${v}"`;
-        return `  ${k}="${v}"`;
-      });
+      const lines = Object.entries(attrs).map(([k, v]) => k === 'class' ? `class="${v}"` : `  ${k}="${v}"`);
       return `<div ${lines[0]}\n${lines.slice(1).join('\n')}></div>`;
     }
 
+    let state = {
+      type: 'new-car-funnel',
+      color: '#de2828',
+      target: 'parent'
+    };
+    let instance = new dtc.Widget({
+      slot: 1
+    });
     async function renderSingle() {
       root.innerHTML = '';
-      const mount = buildRootEl(state);
-      root.appendChild(mount);
-      await instance.render(mount);
+      const el = buildRootEl(state);
+      root.appendChild(el);
+      await instance.render(el);
       document.getElementById('codeSingle').textContent = snippetFor(state);
       document.getElementById('targetControls').style.display = supportsSubmit(state.type) ? '' : 'none';
     }
 
-    // Type buttons
     document.querySelectorAll('#typeControls .btn').forEach(btn => {
-      btn.addEventListener('click', async () => {
+      btn.onclick = async () => {
         document.querySelectorAll('#typeControls .btn').forEach(b => b.classList.remove('is-active'));
         btn.classList.add('is-active');
         state.type = btn.dataset.type;
         await instance.unmount();
         renderSingle();
-      });
+      };
     });
-
-    // Color swatches
     document.querySelectorAll('#colorControls .swatch').forEach(s => {
-      s.addEventListener('click', async () => {
+      s.onclick = async () => {
         document.querySelectorAll('#colorControls .swatch').forEach(x => x.classList.remove('is-active'));
         s.classList.add('is-active');
         state.color = s.dataset.color;
         await instance.unmount();
         renderSingle();
-      });
+      };
     });
-
-    // Custom HEX apply
-    document.getElementById('applyHexSingle').addEventListener('click', async () => {
-      const val = document.getElementById('hexInputSingle').value.trim();
-      if (!VALID_HEX.test(val)) {
-        alert('Enter a valid HEX like #303745');
-        return;
-      }
-      state.color = val;
-      document.querySelectorAll('#colorControls .swatch').forEach(x => x.classList.remove('is-active'));
+    document.getElementById('applyHexSingle').onclick = async () => {
+      const v = document.getElementById('hexInputSingle').value.trim();
+      if (!VALID_HEX.test(v)) return alert('Enter a valid hex (#RRGGBB)');
+      state.color = v;
       await instance.unmount();
       renderSingle();
-    });
-
-    // Submit target (where applicable)
+    };
     document.querySelectorAll('#targetControls .btn').forEach(btn => {
-      btn.addEventListener('click', async () => {
+      btn.onclick = async () => {
         document.querySelectorAll('#targetControls .btn').forEach(b => b.classList.remove('is-active'));
         btn.classList.add('is-active');
         state.target = btn.dataset.target;
@@ -284,9 +295,11 @@
           await instance.unmount();
           renderSingle();
         }
-      });
+      };
     });
-
+    document.getElementById('copySingle').onclick = () => navigator.clipboard.writeText(document.getElementById('codeSingle').textContent);
+    document.getElementById('copyInlineSingle').onclick = () => navigator.clipboard.writeText(document.getElementById('codeInlineSingle').textContent);
+    renderSingle();
   </script>
 </body>
 

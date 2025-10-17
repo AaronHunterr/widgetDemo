@@ -5,467 +5,144 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>Color Variants</title>
+  <title>Widget Comparison</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
 </head>
 
 <body>
   <header class="site-header" id="siteHeader">
     <div class="container header__inner">
       <a class="brand" href="./"><span class="brand__mark" aria-hidden="true">⬤</span><span class="brand__text">Auto News Demo</span></a>
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
       <nav class="site-nav" id="siteNav" aria-label="Primary">
-        <a href="./">News</a>
-        <a href="#">Reviews</a>
-        <a href="#">EVs</a>
-        <a href="./">Car Buying</a>
-        <a href="./widget.html">Car Quotes</a>
-        <a href="./quotes.html" class="is-active">Car Shopping</a>
-        <a href="#">Ownership</a>
-        <a href="#">Videos</a>
-        <a href="#">Deals</a>
+        <a href="./widget.html">Widget Test</a>
+        <a href="./quotes.html" class="is-active">Widget Comparison</a>
       </nav>
     </div>
   </header>
 
   <section class="hero">
     <div class="container hero__inner">
-      <h1 class="hero__title">Color Variants & Layouts</h1>
-      <p class="hero__dek">Side-by-side above; stacked below. Each side has its own type, color, and (where applicable) submit target.</p>
+      <h1 class="hero__title">Widget Comparison</h1>
+      <p class="hero__dek">Compare two widgets side-by-side or stacked below. Choose types, colors, and view differences instantly.</p>
     </div>
   </section>
 
   <main class="container quotes-wrap">
-    <!-- GLOBAL note: each side has its own control sets (A and B) -->
-    <div class="controls">
-      <!-- LEFT controls -->
-      <div class="group" id="typeA">
-        <span class="label">Left:</span>
-        <button class="btn is-active" data-type="new-car-funnel">Funnel</button>
-        <button class="btn" data-type="new-car-funnel-compact">Funnel (Compact)</button>
-        <button class="btn" data-type="new-car-quote">New Quote</button>
-        <button class="btn" data-type="new-car-quote-minimal">New Quote (Minimal)</button>
-        <button class="btn" data-type="used-car-quote">Used Quote</button>
-        <button class="btn" data-type="used-car-quote-minimal">Used Quote (Minimal)</button>
-        <button class="btn" data-type="new-car-image">New Image</button>
-        <button class="btn" data-type="new-car-image-compact">New Image (Compact)</button>
-        <button class="btn" data-type="used-car-image">Used Image</button>
-        <button class="btn" data-type="calculator">Calculator</button>
-        <button class="btn" data-type="used-pay-body">Used by Payment & Body</button>
-        <button class="btn" data-type="used-pay-mm">Used by Payment, Make & Model</button>
-
-      </div>
-      <div class="group" id="colorA">
-        <span class="label">Color</span>
-        <span class="swatch is-active" style="background:#303745" data-color="#303745"></span>
-        <span class="swatch" style="background:#fd4e3f" data-color="#fd4e3f"></span>
-        <span class="swatch" style="background:#de2828" data-color="#de2828"></span>
-        <span class="swatch" style="background:#252629" data-color="#252629"></span>
-        <span class="swatch" style="background:#000000" data-color="#000000"></span>
-        <span class="swatch" style="background:#ffba3a" data-color="#ffba3a"></span>
-        <div class="hex-input">
-          <input id="hexInputA" type="text" placeholder="#RRGGBB" maxlength="7" />
-          <button class="btn" id="applyHexA">Apply</button>
-        </div>
-      </div>
-      <div class="group" id="targetA" style="display:none;">
-        <span class="label">Submit</span>
-        <button class="btn is-active" data-target="parent">Same tab</button>
-        <button class="btn" data-target="blank">New tab</button>
-      </div>
-
-      <!-- RIGHT controls -->
-      <div class="group" id="typeB">
-        <span class="label">Right:</span>
-        <button class="btn is-active" data-type="new-car-funnel">Funnel</button>
-        <button class="btn" data-type="new-car-funnel-compact">Funnel (Compact)</button>
-        <button class="btn" data-type="new-car-quote">New Quote</button>
-        <button class="btn" data-type="new-car-quote-minimal">New Quote (Minimal)</button>
-        <button class="btn" data-type="used-car-quote">Used Quote</button>
-        <button class="btn" data-type="used-car-quote-minimal">Used Quote (Minimal)</button>
-        <button class="btn" data-type="new-car-image">New Image</button>
-        <button class="btn" data-type="new-car-image-compact">New Image (Compact)</button>
-        <button class="btn" data-type="used-car-image">Used Image</button>
-        <button class="btn" data-type="calculator">Calculator</button>
-        <button class="btn" data-type="used-pay-body">Used by Payment & Body</button>
-        <button class="btn" data-type="used-pay-mm">Used by Payment, Make & Model</button>
-
-      </div>
-      <div class="group" id="colorB">
-        <span class="label">Color</span>
-        <span class="swatch" style="background:#303745" data-color="#303745"></span>
-        <span class="swatch" style="background:#fd4e3f" data-color="#fd4e3f"></span>
-        <span class="swatch is-active" style="background:#de2828" data-color="#de2828"></span>
-        <span class="swatch" style="background:#252629" data-color="#252629"></span>
-        <span class="swatch" style="background:#000000" data-color="#000000"></span>
-        <span class="swatch" style="background:#ffba3a" data-color="#ffba3a"></span>
-        <div class="hex-input">
-          <input id="hexInputB" type="text" placeholder="#RRGGBB" maxlength="7" />
-          <button class="btn" id="applyHexB">Apply</button>
-        </div>
-      </div>
-      <div class="group" id="targetB" style="display:none;">
-        <span class="label">Submit</span>
-        <button class="btn is-active" data-target="parent">Same tab</button>
-        <button class="btn" data-target="blank">New tab</button>
-      </div>
-    </div>
-
-    <!-- TOP: side-by-side -->
     <div class="quotes-grid">
-      <section class="quotes-card demo-panel">
-        <div id="slotA" class="demo-panel"></div>
-        <div class="codebox">
-          <div class="bar"><span>Left snippet</span><button class="copy-btn" id="copyA">Copy</button></div>
-          <pre><code id="codeA"></code></pre>
-        </div>
+      <section class="quotes-card demo-panel" style="background:#2d3442;">
+        <div id="slotA"></div>
       </section>
-      <!-- Script tags (Left) -->
-      <section class="codebox" style="margin-top:12px;">
-        <div class="bar">
-          <span>Script tag — Inline loader</span>
-          <button class="copy-btn" id="copyInlineA">Copy</button>
-        </div>
-        <pre><code id="codeInlineA">&lt;script type="text/javascript" src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget-inline.js"&gt;&lt;/script&gt;</code></pre>
-      </section>
-
-      <section class="codebox" style="margin-top:12px;">
-        <div class="bar">
-          <span>Script tag — Dynamic loader</span>
-          <button class="copy-btn" id="copyDynamicA">Copy</button>
-        </div>
-        <pre><code id="codeDynamicA">&lt;script type="text/javascript" src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget.js"&gt;&lt;/script&gt;</code></pre>
-      </section>
-
-      <section class="quotes-card demo-panel">
-        <div id="slotB" class="demo-panel"></div>
-        <div class="codebox">
-          <div class="bar"><span>Right snippet</span><button class="copy-btn" id="copyB">Copy</button></div>
-          <pre><code id="codeB"></code></pre>
-        </div>
+      <section class="quotes-card demo-panel" style="background:#2d3442;">
+        <div id="slotB"></div>
       </section>
     </div>
-    <!-- Script tags (Right) -->
-    <section class="codebox" style="margin-top:12px;">
-      <div class="bar">
-        <span>Script tag — Inline loader</span>
-        <button class="copy-btn" id="copyInlineB">Copy</button>
-      </div>
-      <pre><code id="codeInlineB">&lt;script type="text/javascript" src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget-inline.js"&gt;&lt;/script&gt;</code></pre>
+    <section class="quotes-card demo-panel" style="background:#2d3442;">
+      <div id="slotA_stack"></div>
     </section>
-
-    <section class="codebox" style="margin-top:12px;">
-      <div class="bar">
-        <span>Script tag — Dynamic loader</span>
-        <button class="copy-btn" id="copyDynamicB">Copy</button>
-      </div>
-      <pre><code id="codeDynamicB">&lt;script type="text/javascript" src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget.js"&gt;&lt;/script&gt;</code></pre>
-    </section>
-
-    <!-- Spacer -->
-    <div style="height:16px"></div>
-
-    <!-- BOTTOM: stacked wide mirrors -->
-    <section class="quotes-card demo-panel" style="margin-bottom:16px;">
-      <div id="slotA_stack" class="demo-panel"></div>
-      <div class="codebox">
-        <div class="bar"><span>Left (stacked) snippet</span><button class="copy-btn" id="copyAStack">Copy</button></div>
-        <pre><code id="codeAStack"></code></pre>
-      </div>
-    </section>
-    <!-- Script tags (Left — stacked) -->
-    <section class="codebox" style="margin-top:12px;">
-      <div class="bar">
-        <span>Script tag — Inline loader</span>
-        <button class="copy-btn" id="copyInlineAStack">Copy</button>
-      </div>
-      <pre><code id="codeInlineAStack">&lt;script type="text/javascript" src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget-inline.js"&gt;&lt;/script&gt;</code></pre>
-    </section>
-
-    <section class="codebox" style="margin-top:12px;">
-      <div class="bar">
-        <span>Script tag — Dynamic loader</span>
-        <button class="copy-btn" id="copyDynamicAStack">Copy</button>
-      </div>
-      <pre><code id="codeDynamicAStack">&lt;script type="text/javascript" src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget.js"&gt;&lt;/script&gt;</code></pre>
-    </section>
-
-    <section class="quotes-card demo-panel">
-      <div id="slotB_stack" class="demo-panel"></div>
-      <div class="codebox">
-        <div class="bar"><span>Right (stacked) snippet</span><button class="copy-btn" id="copyBStack">Copy</button></div>
-        <pre><code id="codeBStack"></code></pre>
-      </div>
+    <section class="quotes-card demo-panel" style="background:#2d3442;">
+      <div id="slotB_stack"></div>
     </section>
   </main>
-  <!-- Script tags (Right — stacked) -->
-  <section class="codebox" style="margin-top:12px;">
-    <div class="bar">
-      <span>Script tag — Inline loader</span>
-      <button class="copy-btn" id="copyInlineBStack">Copy</button>
-    </div>
-    <pre><code id="codeInlineBStack">&lt;script type="text/javascript" src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget-inline.js"&gt;&lt;/script&gt;</code></pre>
-  </section>
-
-  <section class="codebox" style="margin-top:12px;">
-    <div class="bar">
-      <span>Script tag — Dynamic loader</span>
-      <button class="copy-btn" id="copyDynamicBStack">Copy</button>
-    </div>
-    <pre><code id="codeDynamicBStack">&lt;script type="text/javascript" src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget.js"&gt;&lt;/script&gt;</code></pre>
-  </section>
 
   <footer class="site-footer">
     <div class="container footer__inner">
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="#">About</a><a href="#">Editorial Policy</a><a href="#">Contact</a><a href="#">Privacy</a>
-      </nav>
       <p class="copyright">© <span id="year"></span> Demo Media.</p>
     </div>
   </footer>
 
-  <!-- Dynamic loader -->
   <script src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget.js"></script>
   <script>
-    // Shell
-    const siteHeader = document.getElementById('siteHeader');
-    addEventListener('scroll', () => siteHeader.classList.toggle('scrolled', scrollY > 6));
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const menuToggle = document.getElementById('menuToggle'),
-      siteNav = document.getElementById('siteNav');
-    if (menuToggle && siteNav) menuToggle.onclick = () => siteNav.classList.toggle('open');
-
+    document.getElementById("year").textContent = new Date().getFullYear();
     const dtc = window.dtc;
-    const VALID_HEX = /^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})$/;
 
-    const supportsSubmit = t => ['calculator', 'new-car-quote', 'new-car-quote-minimal', 'used-car-quote', 'used-car-quote-minimal', 'new-car-image', 'new-car-image-compact', 'used-car-image', 'used-pay-body', 'used-pay-mm'].includes(t);
-
-    function classFor(type) {
-      switch (type) {
-        case 'new-car-funnel':
-          return ['dt-new-car-funnel', {}];
-        case 'new-car-funnel-compact':
-          return ['dt-new-car-funnel', {
-            'data-theme': 'compact'
-          }];
-
-        case 'new-car-quote':
-          return ['dt-new-car-quote', {}];
-        case 'new-car-quote-minimal':
-          return ['dt-new-car-quote', {
-            'data-theme': 'minimal'
-          }];
-
-        case 'used-car-quote':
-          return ['dt-used-car-quote', {}];
-        case 'used-car-quote-minimal':
-          return ['dt-used-car-quote', {
-            'data-theme': 'minimal'
-          }];
-
-        case 'new-car-image':
-          return ['dt-new-car-image', {}];
-        case 'new-car-image-compact':
-          return ['dt-new-car-image', {
-            'data-theme': 'compact'
-          }];
-
-        case 'used-car-image':
-          return ['dt-used-car-image', {}];
-
-        case 'calculator':
-          return ['dt-car-payment-calculator', {}];
-        case 'used-pay-body':
-          return ['dt-used-car-payment-body-type', {}];
-        case 'used-pay-mm':
-          return ['dt-used-car-payment-makes-models', {}];
-
-      }
-    }
-
-    function buildRootEl(state) {
-      const {
-        type,
-        color,
-        target
-      } = state;
-      const [klass, extra] = classFor(type);
-      const el = document.createElement('div');
-      el.className = klass;
-      el.setAttribute('data-gid', '0000-5200');
-      el.setAttribute('data-tenant', 'RSP1995');
-      el.setAttribute('data-color-primary', color);
-      el.setAttribute('data-font-primary', 'sofia-pro, sans-serif');
-      Object.entries(extra).forEach(([k, v]) => el.setAttribute(k, v));
-      if (supportsSubmit(type)) el.setAttribute('data-submit-target', target);
-      if (klass === 'dt-new-car-funnel') {
-        el.setAttribute('data-make', 'Chevrolet');
-        el.setAttribute('data-model', 'Blazer');
-      }
-      return el;
-    }
-
-    function snippetFor(state) {
-      const {
-        type,
-        color,
-        target
-      } = state;
-      const [klass, extra] = classFor(type);
-      const attrs = {
-        'class': klass,
-        'data-gid': '0000-5200',
-        'data-tenant': 'RSP1995',
-        'data-color-primary': color,
-        'data-font-primary': 'sofia-pro, sans-serif',
-        ...(supportsSubmit(type) ? {
-          'data-submit-target': target
-        } : {}),
-        ...(klass === 'dt-new-car-funnel' ? {
-          'data-make': 'Chevrolet',
-          'data-model': 'Blazer'
-        } : {}),
-        ...extra
-      };
-      const lines = Object.entries(attrs).map(([k, v]) => k === 'class' ? `class="${v}"` : `  ${k}="${v}"`);
-      return `<div ${lines[0]}\n${lines.slice(1).join('\n')}></div>`;
-    }
-
-    function makeSlot(slotId, codeId, targetControlsId, initial, stackId, stackCodeId) {
-      const slot = document.getElementById(slotId);
-      const code = document.getElementById(codeId);
-      const tControls = document.getElementById(targetControlsId);
-      const stack = stackId ? document.getElementById(stackId) : null;
-      const stackCode = stackCodeId ? document.getElementById(stackCodeId) : null;
-
-      let state = {
-        ...initial
-      };
-      const inst1 = new dtc.Widget({
-        slot: 1
-      });
-      const inst2 = new dtc.Widget({
-        slot: 2
-      });
-
-      async function render() {
-        slot.innerHTML = '';
-        const a = buildRootEl(state);
-        slot.appendChild(a);
-        await inst1.render(a);
-        code.textContent = snippetFor(state);
-
-        if (stack) {
-          stack.innerHTML = '';
-          const b = buildRootEl(state);
-          stack.appendChild(b);
-          await inst2.render(b);
-          stackCode.textContent = snippetFor(state);
-        }
-        tControls.style.display = supportsSubmit(state.type) ? '' : 'none';
-      }
-      render();
-
-      return {
-        setType: async t => {
-          state.type = t;
-          await inst1.unmount();
-          await inst2.unmount();
-          render();
-        },
-        setColor: async c => {
-          state.color = c;
-          await inst1.unmount();
-          await inst2.unmount();
-          render();
-        },
-        setTarget: async tg => {
-          state.target = tg;
-          if (supportsSubmit(state.type)) {
-            await inst1.unmount();
-            await inst2.unmount();
-            render();
-          }
-        },
-        applyHex: async val => {
-          if (!VALID_HEX.test(val)) {
-            alert('Enter a valid HEX like #303745');
-            return;
-          }
-          state.color = val;
-          await inst1.unmount();
-          await inst2.unmount();
-          render();
-        }
-      };
-    }
-
-    // Build A/B slots + their stacked mirrors
-    const left = makeSlot('slotA', 'codeA', 'targetA', {
+    const defA = {
       type: 'new-car-funnel',
-      color: '#303745',
-      target: 'parent'
-    }, 'slotA_stack', 'codeAStack');
-    const right = makeSlot('slotB', 'codeB', 'targetB', {
+      color: '#303745'
+    };
+    const defB = {
       type: 'new-car-funnel',
-      color: '#de2828',
-      target: 'parent'
-    }, 'slotB_stack', 'codeBStack');
+      color: '#de2828'
+    };
 
-    // Wiring helpers
-    const wireType = (groupId, setter) => document.querySelectorAll('#' + groupId + ' .btn').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        document.querySelectorAll('#' + groupId + ' .btn').forEach(b => b.classList.remove('is-active'));
-        btn.classList.add('is-active');
-        await setter(btn.dataset.type);
-      });
+    function make(type, color, target = 'parent') {
+      const map = {
+        'new-car-funnel': ['dt-new-car-funnel', {}],
+        'new-car-funnel-compact': ['dt-new-car-funnel', {
+          'data-theme': 'compact'
+        }],
+        'new-car-quote': ['dt-new-car-quote', {}],
+        'new-car-quote-minimal': ['dt-new-car-quote', {
+          'data-theme': 'minimal'
+        }],
+        'used-car-quote': ['dt-used-car-quote', {}],
+        'used-car-quote-minimal': ['dt-used-car-quote', {
+          'data-theme': 'minimal'
+        }],
+        'new-car-image': ['dt-new-car-image', {}],
+        'new-car-image-compact': ['dt-new-car-image', {
+          'data-theme': 'compact'
+        }],
+        'used-car-image': ['dt-used-car-image', {}],
+        'calculator': ['dt-car-payment-calculator', {}],
+        'used-pay-body': ['dt-used-car-payment-body-type', {}],
+        'used-pay-mm': ['dt-used-car-payment-makes-models', {}]
+      };
+      const [cls, extra] = map[type];
+      const d = document.createElement('div');
+      d.className = cls;
+      d.setAttribute('data-gid', '0000-5200');
+      d.setAttribute('data-tenant', 'RSP1995');
+      d.setAttribute('data-color-primary', color);
+      d.setAttribute('data-font-primary', 'Poppins, sans-serif');
+      if (cls === 'dt-new-car-funnel') {
+        d.setAttribute('data-make', 'Chevrolet');
+        d.setAttribute('data-model', 'Blazer');
+      }
+      Object.entries(extra).forEach(([k, v]) => d.setAttribute(k, v));
+      return d;
+    }
+
+    const slotA = document.getElementById('slotA');
+    const slotB = document.getElementById('slotB');
+    const slotA_stack = document.getElementById('slotA_stack');
+    const slotB_stack = document.getElementById('slotB_stack');
+
+    const instA = new dtc.Widget({
+      slot: 1
     });
-    const wireColor = (groupId, setter) => document.querySelectorAll('#' + groupId + ' .swatch').forEach(s => {
-      s.addEventListener('click', async () => {
-        document.querySelectorAll('#' + groupId + ' .swatch').forEach(x => x.classList.remove('is-active'));
-        s.classList.add('is-active');
-        await setter(s.dataset.color);
-      });
+    const instB = new dtc.Widget({
+      slot: 2
     });
-    const wireTarget = (groupId, setter) => document.querySelectorAll('#' + groupId + ' .btn').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        document.querySelectorAll('#' + groupId + ' .btn').forEach(b => b.classList.remove('is-active'));
-        btn.classList.add('is-active');
-        await setter(btn.dataset.target);
-      });
+    const instA2 = new dtc.Widget({
+      slot: 3
+    });
+    const instB2 = new dtc.Widget({
+      slot: 4
     });
 
-    wireType('typeA', t => left.setType(t));
-    wireColor('colorA', c => left.setColor(c));
-    wireTarget('targetA', tg => left.setTarget(tg));
-    document.getElementById('applyHexA').onclick = () => left.applyHex(document.getElementById('hexInputA').value.trim());
-
-    wireType('typeB', t => right.setType(t));
-    wireColor('colorB', c => right.setColor(c));
-    wireTarget('targetB', tg => right.setTarget(tg));
-    document.getElementById('applyHexB').onclick = () => right.applyHex(document.getElementById('hexInputB').value.trim());
-
-    // Copy buttons
-    const copy = id => navigator.clipboard.writeText(document.getElementById(id).textContent);
-    document.getElementById('copyA').onclick = () => copy('codeA');
-    document.getElementById('copyB').onclick = () => copy('codeB');
-    document.getElementById('copyAStack').onclick = () => copy('codeAStack');
-    document.getElementById('copyBStack').onclick = () => copy('codeBStack');
-    // Copy: script tags for each area
-    const cp = id => navigator.clipboard.writeText(document.getElementById(id).textContent);
-
-    // Side-by-side
-    document.getElementById('copyInlineA').onclick = () => cp('codeInlineA');
-    document.getElementById('copyDynamicA').onclick = () => cp('codeDynamicA');
-    document.getElementById('copyInlineB').onclick = () => cp('codeInlineB');
-    document.getElementById('copyDynamicB').onclick = () => cp('codeDynamicB');
-
-    // Stacked
-    document.getElementById('copyInlineAStack').onclick = () => cp('codeInlineAStack');
-    document.getElementById('copyDynamicAStack').onclick = () => cp('codeDynamicAStack');
-    document.getElementById('copyInlineBStack').onclick = () => cp('codeInlineBStack');
-    document.getElementById('copyDynamicBStack').onclick = () => cp('codeDynamicBStack');
+    async function render() {
+      [slotA, slotB, slotA_stack, slotB_stack].forEach(s => s.innerHTML = '');
+      const elA = make(defA.type, defA.color);
+      const elB = make(defB.type, defB.color);
+      const elA2 = make(defA.type, defA.color);
+      const elB2 = make(defB.type, defB.color);
+      slotA.appendChild(elA);
+      slotB.appendChild(elB);
+      slotA_stack.appendChild(elA2);
+      slotB_stack.appendChild(elB2);
+      await instA.render(elA);
+      await instB.render(elB);
+      await instA2.render(elA2);
+      await instB2.render(elB2);
+    }
+    render();
   </script>
 </body>
 
