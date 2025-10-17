@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
   <title>Car Quotes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
@@ -59,7 +60,7 @@
         <button class="btn" data-type="used-pay-body">Used by Payment & Body</button>
         <button class="btn" data-type="used-pay-mm">Used by Payment, Make & Model</button>
 
-        <button class="btn" data-type="inventory-carousel">Inventory Carousel</button>
+
       </div>
 
       <!-- Color presets + custom HEX -->
@@ -88,31 +89,6 @@
     <!-- WIDGET PANEL -->
     <section class="quotes-card demo-panel">
       <div id="widgetSingle" class="demo-panel"></div>
-    </section>
-
-    <!-- COPYABLE SNIPPET -->
-    <section class="codebox">
-      <div class="bar">
-        <span>Copy embed snippet</span>
-        <button class="copy-btn" id="copySingle">Copy</button>
-      </div>
-      <pre><code id="codeSingle"></code></pre>
-    </section>
-    <!-- Copyable: SCRIPT TAGS -->
-    <section class="codebox" style="margin-top:12px;">
-      <div class="bar">
-        <span>Script tag — Inline loader (static sites)</span>
-        <button class="copy-btn" id="copyInlineSingle">Copy</button>
-      </div>
-      <pre><code id="codeInlineSingle">&lt;script type="text/javascript" src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget-inline.js"&gt;&lt;/script&gt;</code></pre>
-    </section>
-
-    <section class="codebox" style="margin-top:12px;">
-      <div class="bar">
-        <span>Script tag — Dynamic loader (SPA / dynamic pages)</span>
-        <button class="copy-btn" id="copyDynamicSingle">Copy</button>
-      </div>
-      <pre><code id="codeDynamicSingle">&lt;script type="text/javascript" src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget.js"&gt;&lt;/script&gt;</code></pre>
     </section>
   </main>
 
@@ -184,8 +160,7 @@
         case 'used-pay-mm':
           return ['dt-used-car-payment-makes-models', {}];
 
-        case 'inventory-carousel':
-          return ['dt-inventory-carousel', {}];
+
       }
     }
 
@@ -312,19 +287,6 @@
       });
     });
 
-    // Copy
-    document.getElementById('copySingle').onclick = () => {
-      navigator.clipboard.writeText(document.getElementById('codeSingle').textContent);
-    };
-
-    renderSingle();
-
-    // Copy: script tags
-    document.getElementById('copyInlineSingle').onclick = () =>
-      navigator.clipboard.writeText(document.getElementById('codeInlineSingle').textContent);
-
-    document.getElementById('copyDynamicSingle').onclick = () =>
-      navigator.clipboard.writeText(document.getElementById('codeDynamicSingle').textContent);
   </script>
 </body>
 

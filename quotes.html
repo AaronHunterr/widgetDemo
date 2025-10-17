@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
   <title>Color Variants</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
@@ -53,7 +54,7 @@
         <button class="btn" data-type="calculator">Calculator</button>
         <button class="btn" data-type="used-pay-body">Used by Payment & Body</button>
         <button class="btn" data-type="used-pay-mm">Used by Payment, Make & Model</button>
-        <button class="btn" data-type="inventory-carousel">Inventory Carousel</button>
+
       </div>
       <div class="group" id="colorA">
         <span class="label">Color</span>
@@ -89,7 +90,7 @@
         <button class="btn" data-type="calculator">Calculator</button>
         <button class="btn" data-type="used-pay-body">Used by Payment & Body</button>
         <button class="btn" data-type="used-pay-mm">Used by Payment, Make & Model</button>
-        <button class="btn" data-type="inventory-carousel">Inventory Carousel</button>
+
       </div>
       <div class="group" id="colorB">
         <span class="label">Color</span>
@@ -280,8 +281,6 @@
         case 'used-pay-mm':
           return ['dt-used-car-payment-makes-models', {}];
 
-        case 'inventory-carousel':
-          return ['dt-inventory-carousel', {}];
       }
     }
 

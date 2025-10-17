@@ -351,3 +351,6 @@ copyright, .copyright{ color:#b6bdca; margin-top:10px; font-size:.95rem; }
   font-weight:700; letter-spacing:.5px;
 }
 .controls .hex-input .btn{ padding:.4rem .7rem; }
+/* Site shell font (widgets can still declare sofia-pro in their data-attrs) */
+:root { --shell-font: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+html, body { font-family: var(--shell-font); }
