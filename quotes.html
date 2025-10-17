@@ -5,14 +5,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>Widget Comparison</title>
+  <title>Widget Test</title>
 
+  <!-- Poppins for page + widgets -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css" />
   <style>
     body {
       font-family: 'Poppins', sans-serif;
     }
+
+    .demo-panel {
+      background: #2d3442;
+    }
+
+    /* default */
+    .demo-panel.is-minimal {
+      background: #eef1f5;
+    }
+
+    /* light gray for Minimal */
   </style>
 </head>
 
@@ -20,34 +32,88 @@
   <header class="site-header" id="siteHeader">
     <div class="container header__inner">
       <a class="brand" href="./"><span class="brand__mark" aria-hidden="true">⬤</span><span class="brand__text">Auto News Demo</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
       <nav class="site-nav" id="siteNav" aria-label="Primary">
-        <a href="./widget.html">Widget Test</a>
-        <a href="./quotes.html" class="is-active">Widget Comparison</a>
+        <a href="./widget.html" class="is-active">Widget Test</a>
+        <a href="./quotes.html">Widget Comparison</a>
       </nav>
     </div>
   </header>
 
   <section class="hero">
     <div class="container hero__inner">
-      <h1 class="hero__title">Widget Comparison</h1>
-      <p class="hero__dek">Compare two widgets side-by-side or stacked below. Choose types, colors, and view differences instantly.</p>
+      <h1 class="hero__title">Widget Test</h1>
+      <p class="hero__dek">Pick any widget, choose a color (or enter a custom HEX), then copy the embed code.</p>
     </div>
   </section>
 
   <main class="container quotes-wrap">
-    <div class="quotes-grid">
-      <section class="quotes-card demo-panel" style="background:#2d3442;">
-        <div id="slotA"></div>
-      </section>
-      <section class="quotes-card demo-panel" style="background:#2d3442;">
-        <div id="slotB"></div>
-      </section>
+    <!-- Controls -->
+    <div class="controls" id="controlsSingle">
+      <div class="group" id="typeControls">
+        <span class="label">Widget:</span>
+        <button class="btn is-active" data-type="new-car-funnel">Funnel</button>
+        <button class="btn" data-type="new-car-funnel-compact">Funnel (Compact)</button>
+
+        <button class="btn" data-type="new-car-quote">New Quote</button>
+        <button class="btn" data-type="new-car-quote-minimal">New Quote (Minimal)</button>
+
+        <button class="btn" data-type="used-car-quote">Used Quote</button>
+        <button class="btn" data-type="used-car-quote-minimal">Used Quote (Minimal)</button>
+
+        <button class="btn" data-type="new-car-image">New Image</button>
+        <button class="btn" data-type="new-car-image-compact">New Image (Compact)</button>
+
+        <button class="btn" data-type="used-car-image">Used Image</button>
+
+        <button class="btn" data-type="calculator">Calculator</button>
+        <button class="btn" data-type="used-pay-body">Used by Payment & Body</button>
+        <button class="btn" data-type="used-pay-mm">Used by Payment, Make & Model</button>
+      </div>
+
+      <div class="group" id="colorControls">
+        <span class="label">Color:</span>
+        <span class="swatch is-active" style="background:#de2828" data-color="#de2828"></span>
+        <span class="swatch" style="background:#303745" data-color="#303745"></span>
+        <span class="swatch" style="background:#fd4e3f" data-color="#fd4e3f"></span>
+        <span class="swatch" style="background:#252629" data-color="#252629"></span>
+        <span class="swatch" style="background:#000000" data-color="#000000"></span>
+        <span class="swatch" style="background:#ffba3a" data-color="#ffba3a"></span>
+        <div class="hex-input">
+          <input id="hexInputSingle" type="text" placeholder="#RRGGBB" maxlength="7" />
+          <button class="btn" id="applyHexSingle">Apply</button>
+        </div>
+      </div>
+
+      <!-- Only for widgets that support submit-target -->
+      <div class="group" id="targetControls" style="display:none;">
+        <span class="label">Submit:</span>
+        <button class="btn is-active" data-target="parent">Same tab</button>
+        <button class="btn" data-target="blank">New tab</button>
+      </div>
     </div>
-    <section class="quotes-card demo-panel" style="background:#2d3442;">
-      <div id="slotA_stack"></div>
+
+    <!-- Widget panel -->
+    <section class="quotes-card demo-panel" id="panelSingle">
+      <div id="widgetSingle"></div>
     </section>
-    <section class="quotes-card demo-panel" style="background:#2d3442;">
-      <div id="slotB_stack"></div>
+
+    <!-- Copyable embed snippet -->
+    <section class="codebox">
+      <div class="bar">
+        <span>Copy embed snippet</span>
+        <button class="copy-btn" id="copySingle">Copy</button>
+      </div>
+      <pre><code id="codeSingle"></code></pre>
+    </section>
+
+    <!-- Copyable script tag (inline loader only) -->
+    <section class="codebox" style="margin-top:12px;">
+      <div class="bar">
+        <span>Script tag — place before &lt;/body&gt;</span>
+        <button class="copy-btn" id="copyInlineSingle">Copy</button>
+      </div>
+      <pre><code id="codeInlineSingle">&lt;script type="text/javascript" src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget-inline.js"&gt;&lt;/script&gt;</code></pre>
     </section>
   </main>
 
@@ -57,92 +123,202 @@
     </div>
   </footer>
 
+  <!-- Dynamic loader for the demo UI (client will copy inline loader above) -->
   <script src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget.js"></script>
   <script>
+    // Shell
     document.getElementById("year").textContent = new Date().getFullYear();
+
     const dtc = window.dtc;
+    const root = document.getElementById('widgetSingle');
+    const panel = document.getElementById('panelSingle');
+    const VALID_HEX = /^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})$/;
 
-    const defA = {
-      type: 'new-car-funnel',
-      color: '#303745'
-    };
-    const defB = {
-      type: 'new-car-funnel',
-      color: '#de2828'
-    };
+    const supportsSubmit = (t) => [
+      'calculator', 'new-car-quote', 'new-car-quote-minimal',
+      'used-car-quote', 'used-car-quote-minimal',
+      'new-car-image', 'new-car-image-compact',
+      'used-car-image', 'used-pay-body', 'used-pay-mm'
+    ].includes(t);
 
-    function make(type, color, target = 'parent') {
-      const map = {
-        'new-car-funnel': ['dt-new-car-funnel', {}],
-        'new-car-funnel-compact': ['dt-new-car-funnel', {
-          'data-theme': 'compact'
-        }],
-        'new-car-quote': ['dt-new-car-quote', {}],
-        'new-car-quote-minimal': ['dt-new-car-quote', {
-          'data-theme': 'minimal'
-        }],
-        'used-car-quote': ['dt-used-car-quote', {}],
-        'used-car-quote-minimal': ['dt-used-car-quote', {
-          'data-theme': 'minimal'
-        }],
-        'new-car-image': ['dt-new-car-image', {}],
-        'new-car-image-compact': ['dt-new-car-image', {
-          'data-theme': 'compact'
-        }],
-        'used-car-image': ['dt-used-car-image', {}],
-        'calculator': ['dt-car-payment-calculator', {}],
-        'used-pay-body': ['dt-used-car-payment-body-type', {}],
-        'used-pay-mm': ['dt-used-car-payment-makes-models', {}]
-      };
-      const [cls, extra] = map[type];
-      const d = document.createElement('div');
-      d.className = cls;
-      d.setAttribute('data-gid', '0000-5200');
-      d.setAttribute('data-tenant', 'RSP1995');
-      d.setAttribute('data-color-primary', color);
-      d.setAttribute('data-font-primary', 'Poppins, sans-serif');
-      if (cls === 'dt-new-car-funnel') {
-        d.setAttribute('data-make', 'Chevrolet');
-        d.setAttribute('data-model', 'Blazer');
+    const isMinimal = (t) => [
+      'new-car-quote-minimal', 'used-car-quote-minimal'
+    ].includes(t);
+
+    function classFor(type) {
+      switch (type) {
+        case 'new-car-funnel':
+          return ['dt-new-car-funnel', {}];
+        case 'new-car-funnel-compact':
+          return ['dt-new-car-funnel', {
+            'data-theme': 'compact'
+          }];
+
+        case 'new-car-quote':
+          return ['dt-new-car-quote', {}];
+        case 'new-car-quote-minimal':
+          return ['dt-new-car-quote', {
+            'data-theme': 'minimal'
+          }];
+
+        case 'used-car-quote':
+          return ['dt-used-car-quote', {}];
+        case 'used-car-quote-minimal':
+          return ['dt-used-car-quote', {
+            'data-theme': 'minimal'
+          }];
+
+        case 'new-car-image':
+          return ['dt-new-car-image', {}];
+        case 'new-car-image-compact':
+          return ['dt-new-car-image', {
+            'data-theme': 'compact'
+          }];
+
+        case 'used-car-image':
+          return ['dt-used-car-image', {}];
+
+        case 'calculator':
+          return ['dt-car-payment-calculator', {}];
+        case 'used-pay-body':
+          return ['dt-used-car-payment-body-type', {}];
+        case 'used-pay-mm':
+          return ['dt-used-car-payment-makes-models', {}];
       }
-      Object.entries(extra).forEach(([k, v]) => d.setAttribute(k, v));
-      return d;
     }
 
-    const slotA = document.getElementById('slotA');
-    const slotB = document.getElementById('slotB');
-    const slotA_stack = document.getElementById('slotA_stack');
-    const slotB_stack = document.getElementById('slotB_stack');
-
-    const instA = new dtc.Widget({
+    // Default widget on load
+    let state = {
+      type: 'new-car-funnel',
+      color: '#de2828',
+      target: 'parent'
+    };
+    let instance = new dtc.Widget({
       slot: 1
     });
-    const instB = new dtc.Widget({
-      slot: 2
-    });
-    const instA2 = new dtc.Widget({
-      slot: 3
-    });
-    const instB2 = new dtc.Widget({
-      slot: 4
+
+    function buildRootEl({
+      type,
+      color,
+      target
+    }) {
+      const [klass, extras] = classFor(type);
+      const el = document.createElement('div');
+      el.className = klass;
+
+      // required attrs
+      el.setAttribute('data-gid', '0000-5200');
+      el.setAttribute('data-tenant', 'RSP1995');
+      el.setAttribute('data-color-primary', color);
+
+      // ensure Poppins in the widget itself
+      el.setAttribute('data-font-primary', 'Poppins');
+      el.setAttribute('data-font-secondary', 'Poppins');
+
+      // optional attributes
+      Object.entries(extras).forEach(([k, v]) => el.setAttribute(k, v));
+      if (supportsSubmit(type)) el.setAttribute('data-submit-target', target);
+      if (klass === 'dt-new-car-funnel') {
+        el.setAttribute('data-make', 'Chevrolet');
+        el.setAttribute('data-model', 'Blazer');
+      }
+      return el;
+    }
+
+    function snippetFor({
+      type,
+      color,
+      target
+    }) {
+      const [klass, extras] = classFor(type);
+      const attrs = {
+        'class': klass,
+        'data-gid': '0000-5200',
+        'data-tenant': 'RSP1995',
+        'data-color-primary': color,
+        // give clients Poppins by default
+        'data-font-primary': 'Poppins',
+        'data-font-secondary': 'Poppins',
+        ...(supportsSubmit(type) ? {
+          'data-submit-target': target
+        } : {}),
+        ...(klass === 'dt-new-car-funnel' ? {
+          'data-make': 'Chevrolet',
+          'data-model': 'Blazer'
+        } : {}),
+        ...extras
+      };
+      const lines = Object.entries(attrs).map(([k, v]) => k === 'class' ? `class="${v}"` : `  ${k}="${v}"`);
+      return `<div ${lines[0]}\n${lines.slice(1).join('\n')}></div>`;
+    }
+
+    function setPanelBg(type) {
+      panel.classList.toggle('is-minimal', isMinimal(type));
+    }
+
+    async function renderWidget() {
+      setPanelBg(state.type);
+      root.innerHTML = '';
+      const el = buildRootEl(state);
+      root.appendChild(el);
+      await instance.render(el);
+      document.getElementById('codeSingle').textContent = snippetFor(state);
+      document.getElementById('targetControls').style.display = supportsSubmit(state.type) ? '' : 'none';
+    }
+
+    // Controls
+    document.querySelectorAll('#typeControls .btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        document.querySelectorAll('#typeControls .btn').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        state.type = btn.dataset.type;
+        await instance.unmount();
+        renderWidget();
+      });
     });
 
-    async function render() {
-      [slotA, slotB, slotA_stack, slotB_stack].forEach(s => s.innerHTML = '');
-      const elA = make(defA.type, defA.color);
-      const elB = make(defB.type, defB.color);
-      const elA2 = make(defA.type, defA.color);
-      const elB2 = make(defB.type, defB.color);
-      slotA.appendChild(elA);
-      slotB.appendChild(elB);
-      slotA_stack.appendChild(elA2);
-      slotB_stack.appendChild(elB2);
-      await instA.render(elA);
-      await instB.render(elB);
-      await instA2.render(elA2);
-      await instB2.render(elB2);
-    }
-    render();
+    document.querySelectorAll('#colorControls .swatch').forEach(s => {
+      s.addEventListener('click', async () => {
+        document.querySelectorAll('#colorControls .swatch').forEach(x => x.classList.remove('is-active'));
+        s.classList.add('is-active');
+        state.color = s.dataset.color;
+        await instance.unmount();
+        renderWidget();
+      });
+    });
+
+    document.getElementById('applyHexSingle').addEventListener('click', async () => {
+      const val = document.getElementById('hexInputSingle').value.trim();
+      if (!VALID_HEX.test(val)) {
+        alert('Enter valid HEX like #303745');
+        return;
+      }
+      state.color = val;
+      document.querySelectorAll('#colorControls .swatch').forEach(x => x.classList.remove('is-active'));
+      await instance.unmount();
+      renderWidget();
+    });
+
+    document.querySelectorAll('#targetControls .btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        document.querySelectorAll('#targetControls .btn').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        state.target = btn.dataset.target;
+        if (supportsSubmit(state.type)) {
+          await instance.unmount();
+          renderWidget();
+        }
+      });
+    });
+
+    // Copy buttons
+    document.getElementById('copySingle').onclick = () =>
+      navigator.clipboard.writeText(document.getElementById('codeSingle').textContent);
+    document.getElementById('copyInlineSingle').onclick = () =>
+      navigator.clipboard.writeText(document.getElementById('codeInlineSingle').textContent);
+
+    // Initial render with default widget
+    renderWidget();
   </script>
 </body>
 
