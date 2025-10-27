@@ -7,17 +7,15 @@
   <title>Used Cars Under $45k – Shopper’s Guide</title>
 
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
-
-  <!-- External Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet" />
+  <!-- External CSS -->
   <link rel="stylesheet" href="./styles.css" />
 </head>
-
 <body>
   <header class="topbar">
     <a class="brand" href="#">
       <span class="brand-dot" aria-hidden="true"></span>
-      <span>DriveGuide <small>Deals & Research</small></span>
+      <span class="brand-wordmark">DriveGuide <small>Deals & Research</small></span>
     </a>
   </header>
 
@@ -33,6 +31,7 @@
       </div>
     </section>
 
+    <!-- Large hero visual with consistent aspect ratio -->
     <div class="billboard" role="img" aria-label="Open road under blue sky">
       <div class="tabs">
         <span class="pill active">Viewed</span>
@@ -46,28 +45,29 @@
 
       <section class="card">
         <div class="eyebrow">Smart Budgeting</div>
-        <h2 class="h2">Why <$45k is the sweet spot</h2>
+        <h2 class="h2">Why &lt;$45k is the sweet spot</h2>
         <p class="lead">
-          In today’s market, the **$30k–$45k** range captures late-model, low-mileage vehicles that still
+          In today’s market, the <strong>$30k–$45k</strong> range captures late-model, low-mileage vehicles that still
           qualify for robust inspections and warranty coverage—often at thousands less than new.
         </p>
 
-        <div class="figure">
+        <!-- Uniform figure (16:9, cover) -->
+        <figure class="figure">
           <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop" alt="Row of certified used vehicles" />
-        </div>
+        </figure>
 
         <ul class="checklist">
           <li><strong>Depreciation advantage:</strong> Let the first owner take the steepest curve; you keep the value.</li>
           <li><strong>Better trims, safer tech:</strong> Move up a package (or two) while staying under budget.</li>
-          <li><strong>Certified & inspected:</strong> Big-box retailers offer standardized inspections and return windows.</li>
+          <li><strong>Certified &amp; inspected:</strong> Big-box retailers offer standardized inspections and return windows.</li>
         </ul>
       </section>
 
-      <!-- MID-ARTICLE INVENTORY CAROUSEL -->
-      <section class="sponsor-block" aria-label="Sponsored Inventory Carousel">
-        <div class="sponsor-head">
-          <div class="eyebrow">Sponsored</div>
-          <div class="cap">Showing <strong>Used</strong> vehicles near <strong>60602</strong> up to <strong>$42,000</strong></div>
+      <!-- Mid-article widget block (no 'Sponsored' copy) -->
+      <section class="widget-card">
+        <div class="widget-head">
+          <h3 class="widget-title">Used inventory near 60602</h3>
+          <div class="cap">Filtered to max price <strong>$42,000</strong></div>
         </div>
         <div class="widget-wrap">
           <div
@@ -81,9 +81,6 @@
             data-font-secondary="Questrial">
           </div>
         </div>
-        <p class="subtle">
-          Listings supplied by partners. When you click through, we may earn a commission—at no extra cost to you.
-        </p>
       </section>
 
       <section class="card">
@@ -91,24 +88,44 @@
         <h2 class="h2">Leverage a big-retailer appraisal</h2>
         <p>
           Getting an appraisal from a national retailer like <strong>CarMax</strong> can be a smart baseline.
-          Their offers are **quick, transparent, and honored for multiple days**, giving leverage when negotiating elsewhere.
+          Their offers are quick, transparent, and typically honored for multiple days—handy leverage when
+          negotiating elsewhere or as a no-pressure fallback cash price.
         </p>
 
         <ul class="checklist">
-          <li>Lock in a **no-pressure cash price** as a fallback.</li>
-          <li>Benchmark value against local dealers to **avoid lowball bids**.</li>
-          <li>Bundle sale + purchase for a **one-stop** experience.</li>
+          <li>Benchmark value to avoid lowball trade-in bids.</li>
+          <li>Bundle sale + purchase for a one-stop experience.</li>
         </ul>
 
-        <div class="figure">
+        <!-- Uniform figure -->
+        <figure class="figure">
           <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?q=80&w=1600&auto=format&fit=crop" alt="Technician inspecting a vehicle" />
-        </div>
+        </figure>
+
+        <div class="eyebrow">Peace of Mind</div>
+        <h2 class="h2">Inspection depth &amp; warranty support</h2>
+        <p>
+          Large retailers invest in standardized, multi-point inspections and offer return windows and warranty options.
+          In the sub-$45k range, that combination delivers strong value for buyers who want fewer surprises after purchase.
+        </p>
+      </section>
+
+      <section class="card">
+        <div class="eyebrow">Quick Tips</div>
+        <h2 class="h2">Checklist for sub-$45k success</h2>
+        <ul class="checklist">
+          <li>Target 2–5-year-old models with clean history and documented maintenance.</li>
+          <li>Verify tire &amp; brake life; factor wear items into your budget.</li>
+          <li>Prefer a return window or warranty—use it to schedule a post-purchase inspection.</li>
+          <li>Run payment scenarios; watch APR and term as closely as the price tag.</li>
+        </ul>
       </section>
 
       <div class="spacer"></div>
     </article>
   </main>
 
-  <script type="text/javascript" src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget-inline.js"></script>
+  <!-- Inline loader -->
+  <script src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget-inline.js"></script>
 </body>
 </html>
