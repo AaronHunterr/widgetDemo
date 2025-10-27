@@ -1,224 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>Car Buying – Demo</title>
-  <meta name="description" content="Demo category page with a right-rail widget slot and editorial layout." />
+  <title>Inventory Carousel Demo</title>
+
+  <!-- Poppins font for page + widget -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- If you already have styles.css in this repo, keep this link.
+       Otherwise you can remove it and rely on the inline styles below. -->
   <link rel="stylesheet" href="./styles.css" />
+
+  <style>
+    /* Lightweight defaults in case styles.css isn't present */
+    :root { --bg:#303745; --ink:#e5e7eb; --panel:#2d3442; --leader:#121212; }
+    html, body { height:100%; }
+    body {
+      margin:0; font-family:'Poppins',system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      background:var(--bg); color:var(--ink); line-height:1.6;
+    }
+    .site-header {
+      background:var(--leader); border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .container { max-width:1100px; margin:0 auto; padding:0 16px; }
+    .header__inner { display:flex; align-items:center; justify-content:flex-start; height:56px; gap:12px; }
+    .brand { display:flex; align-items:center; gap:10px; color:var(--ink); text-decoration:none; font-weight:700; letter-spacing:.2px; }
+    .brand__mark { width:10px; height:10px; display:inline-block; background:#de2828; border-radius:50%; }
+    .hero { padding:26px 0 6px; }
+    .hero__title { margin:0 0 8px; font-size:28px; }
+    .hero__dek { margin:0; opacity:.85; }
+
+    .leaderboard { background:var(--leader); display:flex; align-items:center; justify-content:center;
+      height:90px; margin:12px 0 18px; color:#aaa; border-radius:10px; border:1px solid rgba(255,255,255,.06);
+      font-size:14px; letter-spacing:.3px;
+    }
+
+    .article {
+      display:grid; grid-template-columns: 1fr minmax(0,780px) 1fr; gap:20px;
+    }
+    .article > .spacer { display:none; } /* simple single-column on small screens */
+
+    @media (min-width: 1024px) {
+      .article > .spacer { display:block; }
+    }
+
+    .prose {
+      grid-column: 1 / -1;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .prose h2 { margin: 18px 0 8px; font-size:22px; }
+    .prose p { margin: 10px 0; }
+
+    .sponsor-block {
+      margin: 18px 0; padding: 14px; border-radius: 12px;
+      background: var(--panel); border:1px solid rgba(255,255,255,.06);
+    }
+    .sponsor-eyebrow {
+      font-size:12px; letter-spacing:.35px; text-transform:uppercase;
+      opacity:.8; margin: 4px 0 10px;
+    }
+    /* keep widget full width of block, with a bit of breathing room */
+    .widget-wrap { padding: 6px; }
+  </style>
 </head>
-
-<body class="index">
-  ...
-  <!-- Top utility bar -->
-  <div class="topbar">
-    <div class="container topbar__inner">
-      <span class="topbar__badge">Demo</span>
-      <span class="topbar__msg">This is a non-branded, non-affiliated mock for internal testing.</span>
-    </div>
-  </div>
-
-  <!-- Header / Nav -->
-  <header class="site-header" id="siteHeader">
+<body>
+  <header class="site-header">
     <div class="container header__inner">
       <a class="brand" href="#">
-        <span class="brand__mark" aria-hidden="true">⬤</span>
+        <span class="brand__mark" aria-hidden="true"></span>
         <span class="brand__text">Auto News Demo</span>
       </a>
-
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
-        ☰
-      </button>
-
-      <!-- in the header nav -->
-      <nav class="site-nav" id="siteNav" aria-label="Primary">
-        <a href="./">News</a>
-        <a href="#">Reviews</a>
-        <a href="#">EVs</a>
-        <a href="./" class="is-active">Car Buying</a>
-        <a href="./widget.html">Car Quotes</a>
-        <a href="./quotes.html">Car Shopping</a>
-        <a href="#">Ownership</a>
-        <a href="#">Videos</a>
-        <a href="#">Deals</a>
-      </nav>
+      <!-- intentionally no site nav links -->
     </div>
   </header>
 
-  <!-- Leaderboard ad placeholder (now on dark background) -->
-  <div class="container ad ad--leaderboard" role="complementary" aria-label="Ad">
-    <div class="ad__label">Advertisement</div>
-    <div class="ad__box">Leaderboard 970×250</div>
-  </div>
-
-  <!-- Category hero -->
-  <section class="hero">
-    <div class="container hero__inner">
-      <h1 class="hero__title">Car Buying</h1>
-      <p class="hero__dek">Guides, deals, financing tips, and tools to make your next purchase easier.</p>
-
-      <div class="pill-nav" role="navigation" aria-label="Category filters">
-        <button class="pill is-active">All</button>
-        <button class="pill">How-To</button>
-        <button class="pill">Used</button>
-        <button class="pill">Finance</button>
-        <button class="pill">Deals</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Main layout -->
-  <main class="container layout">
-    <!-- Main content -->
-    <section class="main-col">
-
-      <!-- Featured row -->
-      <div class="featured">
-        <article class="card card--featured">
-          <a class="card__media" href="#">
-            <img src="https://picsum.photos/seed/featured1/1200/675" alt="Featured story image">
-          </a>
-          <div class="card__body">
-            <a href="#" class="kicker">HOW-TO</a>
-            <h2 class="card__title">
-              <a href="#">How to buy a car online in 2025: A step-by-step playbook</a>
-            </h2>
-            <p class="card__excerpt">From setting a budget to arranging delivery, this walkthrough covers each decision point so you get the right car at the right price.</p>
-            <div class="card__meta">By Demo Author · Oct 6, 2025</div>
-          </div>
-        </article>
-
-        <div class="featured__stack">
-          <article class="card card--stacked">
-            <a class="card__media" href="#">
-              <img src="https://picsum.photos/seed/featured2/800/600" alt="Story image">
-            </a>
-            <div class="card__body">
-              <a href="#" class="kicker">DEALS</a>
-              <h3 class="card__title"><a href="#">Best 0% APR offers this month</a></h3>
-            </div>
-          </article>
-          <article class="card card--stacked">
-            <a class="card__media" href="#">
-              <img src="https://picsum.photos/seed/featured3/800/600" alt="Story image">
-            </a>
-            <div class="card__body">
-              <a href="#" class="kicker">USED</a>
-              <h3 class="card__title"><a href="#">10 great used cars under $20k</a></h3>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <!-- INLINE WIDGET: Funnel (Regular) -->
-      <section class="widget-box">
-        <h2 class="widget-box__title">Find Your Deal (Funnel — Regular)</h2>
-        <div class="widget-slot">
-          <div class="dt-new-car-funnel" data-gid="0000-5200" data-tenant="RSP1995" data-make="Chevrolet" data-model="Blazer" data-color-primary="#DE2828" data-font-primary="sofia-pro, sans-serif">
-          </div>
-        </div>
-      </section>
-
-      <!-- Grid of stories -->
-      <div class="grid" id="grid">
-        <article class="card">
-          <a class="card__media" href="#">
-            <img src="https://picsum.photos/seed/a1/640/360" alt="Story image">
-          </a>
-          <div class="card__body">
-            <a href="#" class="kicker">FINANCE</a>
-            <h3 class="card__title"><a href="#">Leasing vs. buying: What really costs less in 2025?</a></h3>
-            <p class="card__excerpt">Run the numbers on term length, APR, and residuals to see the break-even point.</p>
-            <div class="card__meta">5 min read · Guides</div>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="card__media" href="#">
-            <img src="https://picsum.photos/seed/a2/640/360" alt="Story image">
-          </a>
-          <div class="card__body">
-            <a href="#" class="kicker">HOW-TO</a>
-            <h3 class="card__title"><a href="#">Get top dollar for your trade-in</a></h3>
-            <p class="card__excerpt">Prep, photos, timing and the negotiation script that works.</p>
-            <div class="card__meta">7 min read · Tips</div>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="card__media" href="#">
-            <img src="https://picsum.photos/seed/a3/640/360" alt="Story image">
-          </a>
-          <div class="card__body">
-            <a href="#" class="kicker">DEALS</a>
-            <h3 class="card__title"><a href="#">Hidden incentives: How to spot them</a></h3>
-            <p class="card__excerpt">Manufacturer cash, loyalty, and dealer-specific programs explained.</p>
-            <div class="card__meta">4 min read · Deals</div>
-          </div>
-        </article>
-      </div>
-
-      <div class="loadmore-wrap">
-        <button class="btn" id="loadMore">Load more</button>
-      </div>
+  <main class="container">
+    <section class="hero">
+      <h1 class="hero__title">Inventory Carousel — Mid-Article Demo</h1>
+      <p class="hero__dek">A realistic placement inside content, styled to match the dark theme.</p>
     </section>
 
-    <!-- Right rail -->
-    <aside class="rail" aria-label="Sidebar">
-      <!-- Right-rail widget: Funnel (Compact) -->
-      <section class="widget-box">
-        <h2 class="widget-box__title">Deals Finder (Funnel — Compact)</h2>
-        <div class="widget-slot">
-          <div class="dt-new-car-funnel" data-gid="0000-5200" data-tenant="RSP1995" data-make="Chevrolet" data-model="Blazer" data-color-primary="#DE2828" data-font-primary="sofia-pro, sans-serif" data-theme="compact">
-          </div>
-        </div>
-      </section>
+    <div class="leaderboard">Leaderboard 970×90</div>
 
-      <!-- In-rail ad placeholder -->
-      <div class="ad ad--mpu" role="complementary" aria-label="Ad">
-        <div class="ad__label">Advertisement</div>
-        <div class="ad__box">MPU 300×250</div>
+    <!-- Article layout with the widget injected mid-stream -->
+    <article class="article">
+      <div class="spacer"></div>
+
+      <div class="prose">
+        <h2>In-Depth Review</h2>
+        <p>
+          Today we’re taking a closer look at what shoppers in your area are actually clicking on. Below,
+          you’ll find a live inventory carousel that can be filtered or constrained to match on-page context.
+        </p>
+
+        <!-- MID-ARTICLE WIDGET BLOCK -->
+        <aside class="sponsor-block" aria-label="Sponsored Inventory">
+          <div class="sponsor-eyebrow">Sponsored Listings</div>
+          <div class="widget-wrap">
+            <!-- Inventory Carousel -->
+            <div
+              class="dt-inventory-carousel"
+              data-gid="0000-5200"
+              data-postal-code="48309"
+              data-font-primary="Poppins"
+              data-font-secondary="Poppins">
+            </div>
+          </div>
+        </aside>
+
+        <p>
+          Placement can be repeated or A/B tested further down the page to improve engagement. You can also
+          narrow the carousel by body type, price bands, or condition depending on the surrounding editorial.
+        </p>
+
+        <h2>Editor’s Notes</h2>
+        <p>
+          For production, drop this same block into your CMS component where mid-article modules are rendered.
+          Keep the host page’s font loaded (Poppins here) so the widget inherits it cleanly.
+        </p>
       </div>
 
-      <!-- Right-rail widget: Calculator -->
-      <section class="widget-box">
-        <h2 class="widget-box__title">Payment Calculator</h2>
-        <div class="widget-slot">
-          <div class="dt-car-payment-calculator" data-gid="0000-5200" data-tenant="RSP1995" data-color-primary="#DE2828" data-font-primary="sofia-pro, sans-serif" data-submit-target="blank">
-          </div>
-        </div>
-      </section>
+      <div class="spacer"></div>
+    </article>
 
-      <!-- Popular / tools box -->
-      <section class="widget-box">
-        <h2 class="widget-box__title">Popular Guides</h2>
-        <ul class="list">
-          <li><a href="#">Certified pre-owned: worth it?</a></li>
-          <li><a href="#">Extended warranties decoded</a></li>
-          <li><a href="#">How to negotiate the OTD price</a></li>
-          <li><a href="#">What to check on delivery day</a></li>
-        </ul>
-      </section>
-    </aside>
+    <div class="leaderboard" style="margin-top:18px;">Inline Rectangle 300×250</div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer__inner">
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="#">About</a><a href="#">Editorial Policy</a><a href="#">Contact</a><a href="#">Privacy</a>
-      </nav>
-      <p class="copyright">© <span id="year"></span> Demo Media. For internal demonstration only; not affiliated with any car site.</p>
-    </div>
-  </footer>
-
-  <!-- Rydeshopper widget loader (initializes all .dt-* instances above) -->
+  <!-- Inline loader: place before </body> in production -->
   <script type="text/javascript" src="https://www.rydeshopper.com/app/shoppingtools/scripts/widget-inline.js"></script>
-
-  <!-- Page scripts -->
-  <script src="./app.js"></script>
 </body>
-
 </html>
