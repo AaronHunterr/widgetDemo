@@ -325,3 +325,42 @@ body {
     padding: 16px;
   }
 }
+/* --- MOBILE OVERFLOW PATCH --- */
+
+/* 1) Force single-column article grid on small screens */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 2) Uniform figures + no sideways overflow */
+.figure {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+.figure > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 3) Absolutely prevent any horizontal spill (incl. widgets) */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Key guardrails on containers that wrap 3rd-party content */
+.wrap, .hero, .billboard, .card, .widget-card, .widget-wrap {
+  max-width: 100%;
+  overflow-x: hidden; /* contains any child that tries to be wider */
+}
+
+/* 4) Specifically contain the inventory carousel if it requests a fixed width */
+.widget-wrap .dt-inventory-carousel {
+  max-width: 100% !important;
+  width: 100% !important;    /* let it scale to the container */
+  display: block;
+}
