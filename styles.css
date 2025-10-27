@@ -1,356 +1,216 @@
-/* ---- Base / tokens ---- */
-:root{
-  --brand: #e10600;
-  --ink: #111827;
-  --ink-on-dark: #f3f4f6;
-  --muted: #c7ccd6;
-  --bg: #303745;          /* Page background (requested) */
-  --bg-weak: #3a4150;     /* Slightly lighter than bg */
-  --panel: #ffffff;       /* Card/panel background */
-  --border: #e5e7eb;
-
-  --radius: 10px;
-  --shadow-1: 0 1px 2px rgba(0,0,0,.06);
-  --shadow-2: 0 8px 24px rgba(0,0,0,.12);
-
-  --container: 1200px;
-  --gutter: 20px;
+:root {
+  --bg:#f6f7fb;
+  --ink:#0f172a;
+  --muted:#5b6475;
+  --card:#ffffff;
+  --line:#e7e9f1;
+  --blue:#0d5bd7;
+  --blue-ink:#0b3ca6;
+  --radius:16px;
+  --shadow:0 10px 24px rgba(16,24,40,.06), 0 4px 10px rgba(16,24,40,.04);
 }
 
-*{ box-sizing: border-box; }
-html,body{ height:100%; }
-body{
+* { box-sizing: border-box; }
+html, body { height:100%; }
+
+body {
   margin:0;
-  /* Sofia Pro is licensed; we reference it so a licensed kit can supply it.
-     Otherwise it falls back to system sans. */
-  font-family: sofia-pro, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
-  color: var(--ink-on-dark);
-  background: var(--bg);
-  line-height:1.55;
+  font-family:"Questrial", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--ink);
 }
 
-/* ---- Helpers ---- */
-.container{
-  width:min(100%, var(--container));
-  padding-inline: var(--gutter);
-  margin-inline:auto;
-}
-.kicker{
-  display:inline-block;
-  font-size:.78rem;
-  letter-spacing:.04em;
-  font-weight:700;
-  color:var(--brand);
-  text-transform:uppercase;
-  text-decoration:none;
-}
-.btn{
-  appearance:none;
-  border:1px solid #475062;
-  padding:.7rem 1rem;
-  border-radius: 999px;
-  font-weight:600;
-  background:#394154;
-  color: var(--ink-on-dark);
-  cursor:pointer;
-}
-.btn:hover{ border-color:#5b6577; }
-
-/* ---- Topbar ---- */
-.topbar{
-  background: var(--bg-weak);
-  border-bottom:1px solid #475062;
-  color: var(--ink-on-dark);
-  font-size:.9rem;
-}
-.topbar__inner{ display:flex; gap:10px; align-items:center; padding:.4rem 0; }
-.topbar__badge{
-  background:var(--brand);
-  color:#fff; font-weight:700; border-radius:999px; padding:.2rem .6rem; font-size:.75rem;
-}
-.topbar__msg{ color:var(--muted); }
-
-/* ---- Header ---- */
-.site-header{
-  position:sticky; top:0; z-index:50;
-  background: var(--bg);
-  border-bottom:1px solid #475062;
-  transition: box-shadow .2s ease;
-}
-.site-header.scrolled{ box-shadow: 0 4px 14px rgba(0,0,0,.25); }
-.header__inner{
-  display:flex; align-items:center; gap:16px; height:64px;
-}
-.brand{
-  display:flex; align-items:center; gap:10px; text-decoration:none; color: var(--ink-on-dark);
-}
-.brand__mark{
-  width:24px; height:24px; display:inline-grid; place-items:center; border-radius:50%;
-  background:var(--brand); color:#fff; font-weight:700; font-size:.85rem;
-}
-.brand__text{
-  font-weight:800; letter-spacing:.3px; color:var(--ink-on-dark); font-size:1.15rem;
-}
-
-/* ---- Nav ---- */
-.site-nav{
-  margin-left:auto; display:flex; gap:18px; align-items:center;
-}
-.site-nav a{
-  text-decoration:none; color:#e5e7eb; font-weight:600; padding:6px 2px; border-bottom:2px solid transparent;
-}
-.site-nav a:hover{ border-bottom-color: #5b6577; }
-.site-nav a.is-active{ color:#fff; border-bottom-color: var(--brand); }
-
-.menu-toggle{
-  display:none; margin-left:auto;
-  background:none; border:none; font-size:1.5rem; line-height:1; cursor:pointer; color:#fff;
-}
-
-/* ---- Ad placeholders ---- */
-.ad{
-  margin: 18px auto; border:1px dashed #475062; border-radius: var(--radius);
-  padding:6px; position: relative; background: var(--panel);
-}
-.ad__label{
-  position:absolute; top:6px; left:6px; font-size:.7rem; color:#9aa3b2; background:#fff; padding:2px 6px; border-radius:999px; border:1px solid var(--border);
-}
-.ad__box{
-  height: 180px; display:grid; place-items:center; color:#9aa3b2; font-weight:700;
-}
-/* requested: leaderboard background #121212 */
-.ad--leaderboard{
-  background:#121212;
-  border-color:#1f2430;
-}
-.ad--leaderboard .ad__label{ background:#121212; color:#b8c0cc; border-color:#2a3040; }
-.ad--leaderboard .ad__box{ color:#cbd5e1; }
-.ad--leaderboard .ad__box::after{ content:""; }
-
-/* ---- Hero ---- */
-.hero{
-  background: linear-gradient(180deg, #313848 0%, #2b3240 100%);
-  border-top:1px solid #475062;
-  border-bottom:1px solid #475062;
-}
-.hero__inner{ padding: 24px 0; }
-.hero__title{
-  margin: 0 0 4px; font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-weight:800; letter-spacing:.2px; color:#fff;
-}
-.hero__dek{ margin:0; color:#c7ccd6; }
-.pill-nav{ display:flex; gap:8px; margin-top:16px; flex-wrap:wrap; }
-.pill{
-  padding:.45rem .8rem; border:1px solid #5b6577; border-radius:999px; background:#394154; cursor:pointer; font-weight:700; color:#e5e7eb;
-}
-.pill.is-active{ background:var(--brand); color:#fff; border-color:var(--brand); }
-
-/* ---- Layout ---- */
-.layout{
-  display:grid; grid-template-columns: 1fr; gap: 28px; padding: 22px 0 48px;
-}
-@media (min-width: 1024px){
-  .layout{ grid-template-columns: minmax(0, 1fr) 340px; align-items:start; }
-}
-
-/* ---- Featured ---- */
-.featured{
-  display:grid; grid-template-columns: 1fr; gap: 18px; margin-bottom: 20px;
-}
-@media (min-width: 900px){
-  .featured{ grid-template-columns: 2fr 1fr; }
-}
-.featured__stack{ display:grid; gap:18px; }
-
-/* ---- Cards ---- */
-.card{
-  background: var(--panel); border:1px solid var(--border); border-radius: var(--radius); overflow:hidden;
-  box-shadow: var(--shadow-1);
-  display:flex; flex-direction:column; color: var(--ink);
-}
-.card__media img{ width:100%; height:auto; display:block; aspect-ratio: 16/9; object-fit: cover; }
-.card__body{ padding:14px 14px 16px; display:flex; flex-direction:column; gap:8px; }
-.card__title{ margin:0; font-size: clamp(1rem, 2vw, 1.2rem); line-height:1.25; }
-.card__title a{ color:inherit; text-decoration:none; }
-.card__title a:hover{ text-decoration:underline; text-underline-offset:2px; }
-.card__excerpt{ margin:0; color:#374151; }
-.card__meta{ color:#6b7280; font-size:.9rem; }
-
-.card--featured{ border:none; overflow:hidden; box-shadow: var(--shadow-2); }
-.card--featured .card__media img{ aspect-ratio: 16/9; }
-.card--featured .card__body{ padding:18px; }
-.card--stacked .card__media img{ aspect-ratio: 4/3; }
-
-/* ---- Grid of stories ---- */
-.grid{ display:grid; grid-template-columns: 1fr; gap: 18px; }
-@media (min-width: 720px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1100px){ .grid{ grid-template-columns: repeat(3, 1fr); } }
-
-.loadmore-wrap{ display:flex; justify-content:center; margin-top: 14px; }
-
-/* ---- Right rail ---- */
-.rail{ display:flex; flex-direction:column; gap: 20px; }
-.widget-box{
-  border:1px solid #475062; border-radius: var(--radius);
-  background: var(--panel); box-shadow: var(--shadow-1); color: var(--ink);
-}
-.widget-box__title{
-  margin:0; padding:12px 14px; border-bottom:1px solid var(--border);
-  font-size:1rem; font-weight:800; letter-spacing:.2px; color: var(--ink);
-}
-/* Give widgets full width; they manage their own internal padding */
-.widget-slot{ padding: 0; }
-
-/* Optional list box styles */
-.list{ list-style:none; padding: 10px 14px 14px; margin:0; display:grid; gap:10px; }
-.list a{ color:#111827; text-decoration:none; }
-.list a:hover{ text-decoration:underline; }
-
-/* ---- Micro widget previews ---- */
-.micro-widget{
-  /* Small rectangle container to show minimal real estate usage */
-  width: 320px;           /* adjust as needed */
-  min-height: 260px;      /* gives the widget room to render */
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  box-shadow: var(--shadow-1);
-  padding: 8px;           /* light padding; widget provides its own UI inside */
-  overflow: hidden;
-}
-.micro-widget--regular{
-  width: 360px;           /* regular funnel might like a little more width */
-  min-height: 320px;
-}
-
-/* ---- Footer ---- */
-.site-footer{
-  border-top:1px solid #475062; background:#2b3240; color: var(--ink-on-dark);
-}
-.footer__inner{ padding: 22px 0 40px; }
-.footer-nav{ display:flex; flex-wrap:wrap; gap:16px; }
-.footer-nav a{ text-decoration:none; color:#e5e7eb; }
-.footer-nav a:hover{ text-decoration:underline; }
-copyright, .copyright{ color:#b6bdca; margin-top:10px; font-size:.95rem; }
-
-/* ---- Mobile nav ---- */
-@media (max-width: 980px){
-  .menu-toggle{ display:block; }
-  .site-nav{
-    position:fixed; inset:64px 0 0 0; background:#2b3240; transform: translateY(-10px); opacity:0; pointer-events:none;
-    display:flex; flex-direction:column; gap:0; border-top:1px solid #475062;
-  }
-  .site-nav a{ padding:14px var(--gutter); border-bottom:1px solid #475062; }
-  .site-nav.open{ transform:none; opacity:1; pointer-events:auto; }
-}
-/* === Mini previews: show the whole widget, uniformly scaled (no crop) === */
-/* Outer card that defines the final small size and frames the preview */
-/* Mini preview: tighter frame and auto width */
-.mini-widget{
+/* Header */
+.topbar {
+  height:64px;
   background:#fff;
-  border:1px solid var(--border);
-  border-radius:12px;
-  box-shadow:var(--shadow-1);
-  padding:8px;                 /* smaller frame */
-  margin:0 auto;
-  display:inline-block;        /* shrink-wrap to scaled size */
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
-.mini-scaler{
-  --base-width:1024px;
-  --scale:0.50;
+.brand {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:var(--ink);
+  font-weight:700;
+  letter-spacing:.3px;
+}
+.brand-dot {
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:var(--blue);
+}
+.brand small {
+  font-weight:500;
+  color:var(--muted);
+}
 
-  /* width/height will be set by JS based on the widget’s real size */
-  width:auto;
-  height:auto;
+/* Layout */
+.wrap {
+  max-width:1120px;
+  margin:0 auto;
+  padding:24px 16px 64px;
+}
+
+/* Hero */
+.hero {
+  background:linear-gradient(180deg,#eaf2ff 0%,#f6f7fb 100%);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:20px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:14px;
+  align-items:center;
+}
+.hero h1 {
+  margin:0;
+  font-size:28px;
+  letter-spacing:.3px;
+}
+.hero p {
+  margin:2px 0 0;
+  color:var(--muted);
+}
+.cta {
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.btn {
+  border:none;
+  background:var(--blue);
+  color:#fff;
+  cursor:pointer;
+  padding:12px 18px;
+  border-radius:999px;
+  font-weight:600;
+  letter-spacing:.3px;
+  box-shadow:0 6px 16px rgba(13,91,215,.22);
+}
+.btn.secondary {
+  background:#fff;
+  color:var(--blue-ink);
+  border:1px solid var(--line);
+  box-shadow:none;
+}
+
+/* Billboard */
+.billboard {
+  margin:18px 0 22px;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  aspect-ratio:21/9;
+  background:#dfe8ff url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
   position:relative;
 }
-
-.mini-scaler__content{
-  width:var(--base-width);
-  transform:scale(var(--scale));
-  transform-origin:top left;
+.tabs {
   position:absolute;
-  top:0; left:0;
+  left:24px;
+  bottom:24px;
+  display:flex;
+  gap:12px;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(6px);
+  padding:8px;
+  border-radius:999px;
+  border:1px solid var(--line);
+}
+.pill {
+  padding:8px 14px;
+  border-radius:999px;
+  font-weight:600;
+  color:var(--blue-ink);
+}
+.pill.active {
+  background:var(--blue);
+  color:#fff;
 }
 
-/* Safety: ensure no previous micro rules leak onto these */
-.mini-scaler__content > .dt-new-car-funnel,
-.mini-scaler__content > .dt-car-payment-calculator {
-  width: auto !important;
-  max-width: none !important;
-  transform: none !important;
-  position: static !important;
+/* Article & Cards */
+.grid {
+  display:grid;
+  grid-template-columns: 1fr minmax(0,740px) 1fr;
+  gap:24px;
 }
-/* Widget demo containers (requested color) */
-.demo-panel {
-  background: #2d3442;            /* container background */
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: var(--shadow-1);
-  padding: 12px;                  /* slight inner padding */
+.spacer { display:none; }
+@media (min-width:1024px) {
+  .spacer { display:block; }
 }
+.card {
+  grid-column:1 / -1;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:22px;
+}
+.eyebrow {
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.35px;
+  color:var(--muted);
+}
+.h2 {
+  font-size:24px;
+  margin:6px 0 6px;
+}
+.lead {
+  color:var(--muted);
+  margin:0 0 6px;
+}
+.figure {
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  margin:12px 0;
+}
+.figure img {
+  display:block;
+  width:100%;
+  height:auto;
+}
+.checklist { padding-left:18px; }
+.checklist li { margin:6px 0; }
 
-/* Control bar */
-.controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-  margin: 16px 0;
+/* Widget Section */
+.sponsor-block {
+  margin:18px 0;
+  padding:16px;
+  border-radius:16px;
+  background:#ffffff;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
 }
-.controls .group {
-  display: flex; gap: 8px; align-items: center; background: #394154; border:1px solid #475062; border-radius: 999px; padding: 6px 8px;
+.sponsor-head {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:8px;
 }
-.controls .label { font-weight: 700; font-size: .9rem; color: #e5e7eb; margin-right: 4px; }
-.controls .btn {
-  background: #2b3240; border: 1px solid #475062; color: #e5e7eb; padding: .45rem .7rem; border-radius: 999px; font-weight: 700; cursor: pointer;
+.cap {
+  font-size:13px;
+  color:var(--muted);
 }
-.controls .btn.is-active { background: var(--brand); border-color: var(--brand); color: #fff; }
-.controls .swatch {
-  width: 22px; height: 22px; border-radius: 999px; border: 2px solid #fff3; cursor: pointer; display: inline-block;
+.cap strong {
+  color:var(--blue-ink);
 }
-.controls .swatch.is-active { outline: 2px solid #fff; outline-offset: 2px; }
-
-/* Layout helpers for quotes.html */
-.quotes-wrap { padding: 24px 0 48px; }
-.quotes-grid { display: grid; gap: 20px; }
-@media (min-width: 1024px) { .quotes-grid { grid-template-columns: 1fr 1fr; } }
-.quotes-card { border-radius: 12px; overflow: hidden; }
-
-/* Slight extra padding for widget boxes on index.html only */
-.index .widget-box .widget-slot { padding: 10px; }
-/* Copyable snippet box */
-.codebox {
-  margin-top: 12px;
-  background: #1f2430;
-  border: 1px solid #475062;
-  border-radius: 10px;
-  position: relative;
+.widget-wrap { padding:10px; }
+.subtle {
+  margin-top:18px;
+  color:var(--muted);
+  font-size:13px;
+  border-top:1px dashed var(--line);
+  padding-top:12px;
 }
-.codebox .bar {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 8px 10px; border-bottom: 1px solid #3a4150; color: #e5e7eb;
-  font-weight: 700; font-size: .9rem;
-}
-.codebox .copy-btn {
-  background: #2b3240; border: 1px solid #475062; color: #e5e7eb;
-  border-radius: 8px; padding: .35rem .6rem; cursor: pointer; font-weight: 700;
-}
-.codebox pre {
-  margin: 0; padding: 10px; overflow: auto; color: #f8fafc; font-size: .92rem;
-  white-space: pre; tab-size: 2;
-}
-/* small inputs for custom hex entry */
-.controls .hex-input {
-  display:flex; gap:8px; align-items:center;
-  background:#2b3240; border:1px solid #475062; border-radius:999px; padding:6px 8px;
-}
-.controls .hex-input input[type="text"]{
-  background:transparent; border:none; color:#e5e7eb; width:110px; outline:none;
-  font-weight:700; letter-spacing:.5px;
-}
-.controls .hex-input .btn{ padding:.4rem .7rem; }
-/* Site shell font (widgets can still declare sofia-pro in their data-attrs) */
-:root { --shell-font: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-html, body { font-family: var(--shell-font); }
