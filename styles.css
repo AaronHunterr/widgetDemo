@@ -364,3 +364,36 @@ html, body {
   width: 100% !important;    /* let it scale to the container */
   display: block;
 }
+/* --- DESKTOP VIEWPORT CONSTRAINT --- */
+
+/* Keep layout centered and visually balanced on wide screens */
+@media (min-width: 1280px) {
+  body {
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg);
+  }
+
+  .wrap {
+    max-width: 1200px;   /* limits total width */
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  /* prevent hero and billboard from touching window edges */
+  .hero, .billboard, .card, .widget-card {
+    border-radius: 18px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* smooth transition between tablet and desktop */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .wrap {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
